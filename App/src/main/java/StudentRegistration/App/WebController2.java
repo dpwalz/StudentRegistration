@@ -6,7 +6,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class WebController2 {
 
-    @RequestMapping("/")
+    @RequestMapping("/page1")
     public ModelAndView page1() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("page1.html");
