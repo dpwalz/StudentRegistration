@@ -26,6 +26,8 @@ function formSubmit(e) {
     headers:{"Content-Type":"application/json"},
     body: JSON.stringify(loginDict),
   })
-  .then(response => console.log(response.body))
+  .then(response => window.location.href = "http://localhost:8080/" + response)
   .catch(error => console.log(error))
+
+
 }
