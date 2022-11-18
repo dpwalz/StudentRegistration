@@ -1,6 +1,6 @@
 let data = ["Derek Walz 11234", "Brock Lesner 123456789", "Tina Turner 12345799"];
   
-let list = document.getElementById("myList");
+let list = document.getElementById("stuList");
 let dropList = document.getElementById("dropList");
 
 
@@ -12,31 +12,31 @@ data.forEach((item) => {
     li.appendChild(grade);
 });
 
-function submitGrades(){
+function addGrades(){
     
-    let students = document.getElementById("myList").querySelectorAll("li");
-    let courseList = '';
-    let courseObj = [];
+    let students = document.getElementById("stuList").querySelectorAll("li");
+    let studentList = '';
+    let studentObj = [];
 
     students.forEach((item) => {
-        let theForm = new FormData()
+        let grades = item.lastElementChild;
+        let grade = grades.options[grades.options.selectedIndex].value;
         let courseParse = item.innerText.split(" ");
         let courseDict = {
             'StudentName': courseParse[0],
             'StudentID': courseParse[1],
-            'Grade': theForm.get('studentsgrade')
+            'Grade': grade
         };
-        courseObj.push(courseDict);
-        courseList += item.innerText + '\n';
+        studentObj.push(courseDict);
+        studentList += item.firstChild.innerText + 'grade:' + grade + '\n';
     });
-    console.log(courseObj);
-    console.log(courseList);
-    alert('Dropping:\n' + courseList);
+    console.log(studentObj);
+    console.log(studentList);
+    alert('Dropping:\n' + studentList);
 }
 
 
 function makeGrades() {
-    let dropdown = document.createElement("form");
     let options = document.createElement("select");
     options.name = 'studentsgrade';
     let myOptions = ['A+', 'A', 'A-', 'B+']
@@ -46,6 +46,5 @@ function makeGrades() {
         new_option.innerText = item;
         options.appendChild(new_option);
     });
-    dropdown.appendChild(options);
-    return dropdown;
+    return options;
 }
