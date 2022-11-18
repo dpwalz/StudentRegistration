@@ -20,10 +20,10 @@ function formSubmit(e) {
 //     document.querySelector('input[name="pass"]').value
 //   )
 
-  fetch("https://nocodeform.io/f/{your-form-id}",
+  fetch("http://localhost:8080/api/vi/user",
   {
     method: "POST",
-    body: formData,
+    body: JSON.stringify(loginDict),
   })
   .then(response => console.log(response))
   .catch(error => console.log(error))

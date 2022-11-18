@@ -22,9 +22,10 @@ function formSubmit(e) {
 
   fetch("http://localhost:8080/api/v1/user",
   {
-    method: "POST",
+    method: "PUT",
+    headers:{"Content-Type":"application/json"},
     body: JSON.stringify(loginDict),
   })
-  .then(response => console.log(response))
+  .then(response => console.log(response.body))
   .catch(error => console.log(error))
 }

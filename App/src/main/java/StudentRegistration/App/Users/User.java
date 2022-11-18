@@ -56,6 +56,11 @@ public class User implements Serializable {
 
     }
 
+    public User(String username, String userPassword) {
+        this.username = username;
+        this.setUserPassword(userPassword);
+    }
+
     public User(String username, String userPassword, String FName, String LName, String studentID, String studentFlag, String teacherFlag, String adminFlag) {
         this.username = username;
         this.UserPassword = userPassword;
@@ -76,5 +81,33 @@ public class User implements Serializable {
         return username;
     }
 
+    public String getStudentFlag() {
+        return StudentFlag;
+    }
+
+    public void setStudentFlag(String studentFlag) {
+        StudentFlag = studentFlag;
+    }
+
+    public String getTeacherFlag() {
+        return TeacherFlag;
+    }
+
+    public void setTeacherFlag(String teacherFlag) {
+        TeacherFlag = teacherFlag;
+    }
+
+    public String getAdminFlag() {
+        return AdminFlag;
+    }
+
+    public void setAdminFlag(String adminFlag) {
+        AdminFlag = adminFlag;
+    }
+
+    @Override
+    public String toString() {
+        return this.username + " " + this.getUserPassword();
+    }
 
 }

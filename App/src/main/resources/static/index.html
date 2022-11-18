@@ -8,25 +8,18 @@
     <title>Student Registration</title>
 </head>
 <body>
-    <h1>Click on User Type</h1>
+    <h1>School Course Manager 1000</h1>
     <div>
-        <ul>
-            <li>
-                <a href="student_login.html">
-                    <Button>Student</Button>
-                </a>
-            </li>
-            <li>
-                <a href="teacher_login.html">
-                    <Button>Teacher</Button>
-                </a>
-            </li>
-            <li>
-                <a href="admin_login.html">
-                    <Button>Admin</Button>
-                </a>
-            </li>
-        </ul>> 
+        <form id="login-form" method="POST"> <!--action to query DB -->
+            <label for="username">Username: &nbsp&nbsp&nbsp&nbsp</label>
+            <input type="text" id="username" placeholder="username" name="username"><br>
+            <label for="username">Password: &nbsp&nbsp&nbsp&nbsp</label>
+            <input type="text" id="password" placeholder="password" name="pass"><br>
+            <input type="submit" value="Login">
+          </form>
     </div>
 </body>
+
+<script src="login.js"></script>
+
 </html>
