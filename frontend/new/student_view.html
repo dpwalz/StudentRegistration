@@ -5,17 +5,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="./resources/css/index.css" type="text/css"> -->
-    <title>Student Registration</title>
+    <title>Student Course Portal</title>
 </head>
 
 <body> 
-    <h1>Student View</h1>
+    <h1>Student Portal</h1>
+
+    <!-- Current courses here-->
     <div>
-        <ul id="myList"></ul>
-            <script src="studentlist.js"></script>
+        <label for="myist">Current Enrolled Courses</label>
+        <ul name ="mylist" id="myList"></ul>
+
     </div>
+<br>
+<br>
+<br>
+    <div>
+        <label for="droplist">Courses To Drop</label>
+        <ul name="droplist" id="dropList"></ul>
+        <Button onclick="dropCourses()">Drop Courses</Button>
+    </div>
+<br>
+<br>
+<br>
+<br>
+<div>
+    <div>
+        <label for="searchall">See All Courses</label><br>
+        <button type="button" id="searchall">Search All</button><br><br><br>
+    </div>
+
+    <div>
+        <form>
+            <label for="searchname">Search For A Course</label><br>
+            <input type="text" id="searchname" name="searchname" placeholder="coursename (ENSF)" >
+            <input type="text" id="searchcode" name="searchcode" placeholder="coursecode (607)">
+            <button type="button" id="searchone">Search</button>
+        </form>
+    </div>
+    <div>
+        <label for="addlist">Search For A Course</label><br>
+        <ul name ="addlist" id="addList"></ul>
+    </div>
+</div>
+<!-- required minlength="4" maxlength="8" size="10" -->
+
+    <br>
+    <br>
+    <br>
+    <br>
     <a href="index.html">
         <Button>Log Out</Button>
     </a>
+    <script src="studentlist.js"></script>
+    
     
 </body>
