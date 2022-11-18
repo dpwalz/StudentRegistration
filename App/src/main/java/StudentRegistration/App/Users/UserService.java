@@ -8,15 +8,15 @@ import java.util.List;
 @Service
 public class UserService {
 
-    private final testRepository testRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public UserService(testRepository testRepository) {
-        this.testRepository = testRepository;
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     public List<User> getAllUsers() {
-        return testRepository.findAll();
+        return userRepository.findAll();
     }
 
 }
