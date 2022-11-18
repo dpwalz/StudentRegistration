@@ -1,7 +1,7 @@
-let data = ["ENSF 592 01", "ENSF 593 02", "ENSF 594 03", "ENSF 607 01"];
+let data = ["ENSF 608 01", "ENSF 611 02", "ENSF 614 03", "ENSF 645 01"];
   
 let list = document.getElementById("myList");
-let dropList = document.getElementById("dropList");
+let addList = document.getElementById("dropList");
 
 
 data.forEach((item) => {

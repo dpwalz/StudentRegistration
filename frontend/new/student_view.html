@@ -13,12 +13,17 @@
 
     <!-- Current courses here-->
     <div>
-        <ul id="myList"></ul>
-        <Button onclick="dropCourses()">Drop Courses</Button>
+        <label for="myist">Current Enrolled Courses</label>
+        <ul name ="mylist" id="myList"></ul>
+
     </div>
+<br>
+<br>
+<br>
     <div>
-        <p>Classes to Drop</p>
-        <ul id="dropList"></ul>
+        <label for="droplist">Courses To Drop</label>
+        <ul name="droplist" id="dropList"></ul>
+        <Button onclick="dropCourses()">Drop Courses</Button>
     </div>
 <br>
 <br>
@@ -39,13 +44,17 @@
             <button type="button" id="searchone">Search</button>
         </form>
     </div>
+    <div>
+        <label for="addlist">Search For A Course</label><br>
+        <ul name ="addlist" id="addList"></ul>
+    </div>
 </div>
 <!-- required minlength="4" maxlength="8" size="10" -->
 
-<br>
-<br>
-<br>
-<br>
+    <br>
+    <br>
+    <br>
+    <br>
     <a href="index.html">
         <Button>Log Out</Button>
     </a>
