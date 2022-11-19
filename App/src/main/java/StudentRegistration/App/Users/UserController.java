@@ -1,6 +1,8 @@
 package StudentRegistration.App.Users;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,26 +28,34 @@ public class UserController {
     @PutMapping
     public String postUser(@RequestBody Login credentials) {
 
+        JSONObject jo = new JSONObject();
+
         User response;
+
         try {
 
             response = userService.checkLoginCredentials(credentials);
 
-            System.out.println(response.getStudent_flag());
+            jo.put("username", response.getUsername());
 
             if (response.getStudent_flag().equals("1"))
-                return "student_view";
+                jo.put("endpoint", "student_view");
 
             if (response.getTeacher_flag().equals("1"))
-                return "teacher_view";
+                jo.put("endpoint", "teacher_view");
+
+            jo.put("status", HttpStatus.OK);
+            System.out.println("Here");
 
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-            return e.getMessage();
+            jo.put("username", "");
+            jo.put("endpoint", "");
+            jo.put("status", HttpStatus.NOT_FOUND.ordinal());
         }
 
-        return "Invalid Username or Password";
+        String s = jo.toString();
+        System.out.println(s);
+        return s;
 
     }
 
