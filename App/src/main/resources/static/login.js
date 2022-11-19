@@ -27,7 +27,8 @@ function formSubmit(e) {
     body: JSON.stringify(loginDict),
   })
   .then((response) => response.text())
-  .then((text) => {console.log(text)})
+  // .then((text) => {console.log(text)})
+  .then((text) => {window.location.href = "http://localhost:8080/" + text})
 
   // .then(response => window.location.href = "http://localhost:8080/" + response)
   .catch(error => console.log(error));
