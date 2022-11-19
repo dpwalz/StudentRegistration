@@ -13,17 +13,9 @@
 
     <!-- Current courses here-->
     <div>
-        <label for="myist">Current Enrolled Courses</label>
+        <label for="mylist">Current Enrolled Courses</label>
         <ul name ="mylist" id="myList"></ul>
 
-    </div>
-<br>
-<br>
-<br>
-    <div>
-        <label for="droplist">Courses To Drop</label>
-        <ul name="droplist" id="dropList"></ul>
-        <Button onclick="dropCourses()">Drop Courses</Button>
     </div>
 <br>
 <br>
@@ -32,21 +24,22 @@
 <div>
     <div>
         <label for="searchall">See All Courses</label><br>
-        <button type="button" id="searchall">Search All</button><br><br><br>
-    </div>
+        <button onclick="searchAll()" type="button" id="searchall">Search All</button><br><br><br>
 
-    <div>
+
         <form>
             <label for="searchname">Search For A Course</label><br>
             <input type="text" id="searchname" name="searchname" placeholder="coursename (ENSF)" >
             <input type="text" id="searchcode" name="searchcode" placeholder="coursecode (607)">
             <button type="button" id="searchone">Search</button>
         </form>
+            <br>
+            <label for="courselist">Results</label>
+            <ul name ="courselist" id="courseList"></ul>
     </div>
-    <div>
-        <label for="addlist">Search For A Course</label><br>
-        <ul name ="addlist" id="addList"></ul>
-    </div>
+
+<br>
+<br>
 </div>
 <!-- required minlength="4" maxlength="8" size="10" -->
 
