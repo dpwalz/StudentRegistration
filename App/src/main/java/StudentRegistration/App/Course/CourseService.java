@@ -18,4 +18,9 @@ public class CourseService {
         return courseRepository.findAll();
     }
 
+    public List<Course> getCourses(String program, int id) {
+        CourseID cid = new CourseID(id, program);
+//        System.out.println(program);
+        return courseRepository.findCourseByCNameAndCNumber(program, id);
+    }
 }
