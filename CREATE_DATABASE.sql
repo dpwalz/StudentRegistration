@@ -16,7 +16,7 @@ CREATE TABLE USERS (
 );
 
 SELECT * FROM USERS;
-INSERT INTO USERS (Username, user_password, FName, LName, StudentID, StudentFlag, TeacherFlag, AdminFlag)
+INSERT INTO USERS (Username, user_password, FName, LName, StudentID, student_flag, teacher_flag, admin_flag)
 VALUES
 ("garnet.crookes", "1234", "Garnet", "Crookes", "00000001", "1", "0", "0"),
 ("derek.walz", "pass", "Derek", "Walz", "00000002", "1", "0", "0"),
