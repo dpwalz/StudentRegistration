@@ -24,12 +24,12 @@ public class Course implements Serializable {
     private String CName;
 
     @Id
-    private String CNumber;
+    private int CNumber;
 
     public Course() {
     }
 
-    public Course(String CName, String CNumber) {
+    public Course(String CName, int CNumber) {
         this.CName = CName;
         this.CNumber = CNumber;
     }
@@ -42,11 +42,11 @@ public class Course implements Serializable {
         this.CName = CName;
     }
 
-    public String getCNumber() {
+    public int getCNumber() {
         return CNumber;
     }
 
-    public void setCNumber(String CNumber) {
+    public void setCNumber(int CNumber) {
         this.CNumber = CNumber;
     }
 }

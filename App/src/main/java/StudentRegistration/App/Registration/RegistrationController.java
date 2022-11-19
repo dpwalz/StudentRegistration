@@ -1,2 +1,4 @@
-package StudentRegistration.App.Registration;public class RegistrationController {
+package StudentRegistration.App.Registration;
+
+public class RegistrationController {
 }

@@ -5,14 +5,14 @@ import java.util.Objects;
 
 public class CourseID implements Serializable {
 
-    private String CNumber;
+    private int CNumber;
     private String CName;
 
     public CourseID() {
 
     }
 
-    public CourseID(String CNumber, String CName) {
+    public CourseID(int CNumber, String CName) {
         this.CNumber = CNumber;
         this.CName = CName;
     }
@@ -22,7 +22,7 @@ public class CourseID implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CourseID courseID = (CourseID) o;
-        return CNumber.equals(courseID.CNumber) && CName.equals(courseID.CName);
+        return CNumber == courseID.CNumber && CName.equals(courseID.CName);
     }
 
     @Override
