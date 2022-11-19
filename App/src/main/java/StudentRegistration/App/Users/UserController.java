@@ -1,9 +1,6 @@
 package StudentRegistration.App.Users;
 
-import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,13 +31,18 @@ public class UserController {
 
             response = userService.checkLoginCredentials(credentials);
 
-            if (response.getStudentFlag().equals("1"))
+            System.out.println(response.getStudent_flag());
+
+            if (response.getStudent_flag().equals("1"))
                 return "student_view";
 
-            if (response.getTeacherFlag().equals("1"))
+            if (response.getTeacher_flag().equals("1"))
                 return "teacher_view";
 
         } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            return e.getMessage();
         }
 
         return "Invalid Username or Password";

@@ -20,4 +20,11 @@ public class WebController2 {
         return modelAndView;
     }
 
+    @RequestMapping("/student_view")
+    public ModelAndView student() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("student_view.html");
+        return modelAndView;
+    }
+
 }

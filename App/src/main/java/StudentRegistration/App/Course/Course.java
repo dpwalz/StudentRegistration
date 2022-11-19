@@ -5,9 +5,10 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "course")
+@IdClass(CourseID.class)
 public class Course implements Serializable {
 
-    @Id
+
     @SequenceGenerator(
             name = "course_sequence",
             sequenceName = "course_sequence",
@@ -19,7 +20,10 @@ public class Course implements Serializable {
             generator = "course_sequence"
     )
 
+    @Id
     private String CName;
+
+    @Id
     private String CNumber;
 
     public Course() {

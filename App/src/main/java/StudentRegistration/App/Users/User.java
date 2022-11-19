@@ -20,20 +20,20 @@ public class User implements Serializable {
     )
 
     private String username;
-    private String UserPassword;
+    private String user_password;
     private String FName;
     private String LName;
     private String StudentID;
-    private String StudentFlag;
-    private String TeacherFlag;
-    private String AdminFlag;
+    private String student_flag;
+    private String teacher_flag;
+    private String admin_flag;
 
-    public String getUserPassword() {
-        return UserPassword;
+    public String getUser_password() {
+        return user_password;
     }
 
-    public void setUserPassword(String userPassword) {
-        UserPassword = userPassword;
+    public void setUser_password(String user_password) {
+        this.user_password = user_password;
     }
 
     public String getFName() {
@@ -58,18 +58,18 @@ public class User implements Serializable {
 
     public User(String username, String userPassword) {
         this.username = username;
-        this.setUserPassword(userPassword);
+        this.setUser_password(userPassword);
     }
 
-    public User(String username, String userPassword, String FName, String LName, String studentID, String studentFlag, String teacherFlag, String adminFlag) {
+    public User(String username, String userPassword, String FName, String LName, String studentID, String studentFlag, String teacherflag, String adminflag) {
         this.username = username;
-        this.UserPassword = userPassword;
+        this.user_password = userPassword;
         this.FName = FName;
         this.LName = LName;
         this.StudentID = studentID;
-        this.StudentFlag = studentFlag;
-        this.TeacherFlag = teacherFlag;
-        this.AdminFlag = adminFlag;
+        this.student_flag = studentFlag;
+        this.teacher_flag = teacherflag;
+        this.admin_flag = adminflag;
     }
 
     public void setUsername(String username) {
@@ -81,33 +81,33 @@ public class User implements Serializable {
         return username;
     }
 
-    public String getStudentFlag() {
-        return StudentFlag;
+    public String getStudent_flag() {
+        return student_flag;
     }
 
-    public void setStudentFlag(String studentFlag) {
-        StudentFlag = studentFlag;
+    public void setStudent_flag(String student_flag) {
+        this.student_flag = student_flag;
     }
 
-    public String getTeacherFlag() {
-        return TeacherFlag;
+    public String getTeacher_flag() {
+        return teacher_flag;
     }
 
-    public void setTeacherFlag(String teacherFlag) {
-        TeacherFlag = teacherFlag;
+    public void setTeacher_flag(String teacher_flag) {
+        this.teacher_flag = teacher_flag;
     }
 
-    public String getAdminFlag() {
-        return AdminFlag;
+    public String getAdmin_flag() {
+        return admin_flag;
     }
 
-    public void setAdminFlag(String adminFlag) {
-        AdminFlag = adminFlag;
+    public void setAdmin_flag(String admin_flag) {
+        this.admin_flag = admin_flag;
     }
 
     @Override
     public String toString() {
-        return this.username + " " + this.getUserPassword();
+        return this.username + " " + this.getUser_password();
     }
 
 }

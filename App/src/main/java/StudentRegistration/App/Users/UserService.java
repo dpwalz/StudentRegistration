@@ -24,7 +24,9 @@ public class UserService {
         Optional<User> entry = userRepository.findUserByUsername(credentials.getUsername());
         User user = entry.get();
 
-        if (!user.getUserPassword().equals(credentials.getPassword()))
+        System.out.println(user);
+
+        if (!user.getUser_password().equals(credentials.getPassword()))
             throw new RuntimeException("Password does not match");
 
         return user;
