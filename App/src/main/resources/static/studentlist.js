@@ -1,12 +1,18 @@
-let enrolled_courses = ["ENSF 592 01", "ENSF 593 02", "ENSF 594 03", "ENSF 607 01"];
-let courses_view = ["ENSF 608 01", "ENSF 611 02", "ENSF 614 03", "ENSF 645 01"];
+//let enrolled_courses = ["ENSF 592 01", "ENSF 593 02", "ENSF 594 03", "ENSF 607 01"];
+//let courses_view = ["ENSF 608 01", "ENSF 611 02", "ENSF 614 03", "ENSF 645 01"];
+let courses_view = [];
+let enrolled_courses = [];
 
+//currently enrolled
 let list = document.getElementById("myList");
+//course searcher
 let courseList = document.getElementById("courseList");
 
-
-displayEnrolled()
-
+populateMyCurrentCourses();
+console.log(enrolled_courses);
+displayEnrolled();
+populateCata();
+console.log(courses_view);
 function displayEnrolled(){
         document.getElementById("myList").innerHTML = "";
         enrolled_courses.forEach((item) => {
@@ -42,13 +48,20 @@ function addButton(item){
     btn.onclick = function(){
         result = confirm("Are you sure you want to add the course?")
         if (result == true){
+             let courseParse = item.split(" ");
+             let courseDict = {
+                     'CourseName': courseParse[0],
+                     'CourseID': courseParse[1],
+                     'Section': courseParse[2]
+                 };
 
-
-        enrolled_courses.push(item)
-        displayEnrolled()
-        courseList.removeChild(li)
+             console.log(courseDict);
+//        addCourse(courseDict);
+//        displayEnrolled()
+//        courseList.removeChild(li)
+        };
         }
-    }
+
     return btn;
 
 }
@@ -64,7 +77,8 @@ function addTOList(item){
 
 
 function searchAll(){
-    courses_view.forEach((item) => {
+
+        courses_view.forEach((item) => {
         let li = document.createElement("li");
         let btn = addButton(item)
         li.innerText = item;
@@ -73,6 +87,71 @@ function searchAll(){
 });
 }
 
+function addCourse(item){
+  fetch("http://localhost:8080/api/v1/course",
+  {
+    method: "PUT",
+    headers:{"Content-Type":"application/json"},
+    body: JSON.stringify(item),
+  })
+  .then((response) => response.json())
+  .then((json) => {
+
+  json.forEach((item) => {
+      let course = '';
+      course = item.cname + " " + item.cnumber;
+      enrolled_courses.push(course);
+    }
+
+)})
+  .catch(error => console.log(error));
+}
+
+
+
+
+function populateMyCurrentCourses(){
+//TODO MAKE SURE TO CHANGE THIS
+//  fetch("http://localhost:8080/api/v1/registration",
+  fetch("http://localhost:8080/api/v1/course",
+  {
+//    method: "GET",
+//    headers:{"Content-Type":"application/json"},
+//    body: JSON.stringify(loginDict),
+  })
+  .then((response) => response.json())
+  .then((json) => {
+
+  json.forEach((item) => {
+      let course = '';
+      course = item.cname + " " + item.cnumber;
+      enrolled_courses.push(course);
+    }
+
+)})
+  .catch(error => console.log(error));
+  }
+
+function populateCata(){
+
+  fetch("http://localhost:8080/api/v1/course",
+  {
+//    method: "GET",
+//    headers:{"Content-Type":"application/json"},
+//    body: JSON.stringify(loginDict),
+  })
+  .then((response) => response.json())
+  .then((json) => {
+
+    json.forEach((item) => {
+        let course = '';
+        course = item.cname + " " + item.cnumber;
+        courses_view.push(course);
+    }
+
+    )})
+  .catch(error => console.log(error));
+}
 
 //Dereks previous drop course
 // function dropCourses(){
