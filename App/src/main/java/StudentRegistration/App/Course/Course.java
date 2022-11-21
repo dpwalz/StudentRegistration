@@ -2,8 +2,7 @@ package StudentRegistration.App.Course;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import StudentRegistration.App.Section.Section;
 
@@ -66,6 +65,17 @@ public class Course implements Serializable {
 
     public void setPrerequisites(Set<Course> prerequisites) {
         this.prerequisites = prerequisites;
+    }
+
+    public List<Integer> getSectionID() {
+        List<Integer> sections = new ArrayList<>();
+
+        for (Section s: getSections()) {
+            sections.add(s.getSection_number());
+        }
+
+        Collections.sort(sections);
+        return sections;
     }
 
     @Override
