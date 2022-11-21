@@ -5,6 +5,7 @@
 
 let courses_view = [];
 let enrolled_courses = [];
+let search_view = [];
 
 //if (sessionStorage.token != ""){
 //    window.location.href = "http://localhost:8080/"};
@@ -73,13 +74,24 @@ function addButton(item){
 }
 
 function searchAll(){
-
+        document.getElementById("courseList").innerHTML = "";
         courses_view.forEach((item) => {
         let li = document.createElement("li");
         let btn = addButton(item)
         li.innerText = item;
         courseList.appendChild(li);
         li.appendChild(btn);
+});
+}
+
+function searchSome(){
+  document.getElementById("courseList").innerHTML = "";
+  search_view.forEach((item) => {
+  let li = document.createElement("li");
+  let btn = addButton(item)
+  li.innerText = item;
+  courseList.appendChild(li);
+  li.appendChild(btn);
 });
 }
 
@@ -102,10 +114,6 @@ function addCourse(courseDict){
 )})
   .catch(error => console.log(error));
 }
-
-
-
-
 
 
 function populateMyCurrentCourses(){
@@ -142,31 +150,27 @@ function populateCata(){
     json.forEach((item) => {
         console.log(item)
         let course = '';
-        course = item.name + " " + item.number + item.section;
+        course = item.cname + " " + item.cnumber;
         courses_view.push(course);
     }
 
     )})
-  .catch(error => console.log(error));
+  .catch((error) => console.log("hello"));
 }
 
-//Dereks previous drop course
-// function dropCourses(){
+function searchClasses(searchBar){
+  
+  let substring = searchBar.value;
+  search_view = [];
 
-//     let courses = document.getElementById("dropList").querySelectorAll("li");
-//     let courseList = '';
-//     let courseObj = [];
-//     courses.forEach((item) => {
-//         let courseParse = item.innerText.split(" ");
-//         let courseDict = {
-//             'CourseName': courseParse[0],
-//             'CourseID': courseParse[1],
-//             'Section': courseParse[2]
-//         };
-//         courseObj.push(courseDict);
-//         courseList += item.innerText + '\n';
-//     });
-//     console.log(courseObj);
-//     console.log(courseList);
-//     alert('Dropping:\n' + courseList);
-// }
+  courses_view.find(element => {
+    if (element.includes(substring)) {
+      console.log();
+      search_view.push(element);
+    }
+  });
+  // console.log(search_view);
+  searchSome();
+
+}
+
