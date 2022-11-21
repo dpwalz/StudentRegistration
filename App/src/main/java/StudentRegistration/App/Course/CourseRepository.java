@@ -1,18 +1,17 @@
 package StudentRegistration.App.Course;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.IdClass;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
-public interface CourseRepository extends JpaRepository<Course, Long> {
-    List<Course> findCourseByCName(String CName);
+public interface CourseRepository extends JpaRepository<Course, CourseID> {
+    List<Course> findCourseByName(String Name);
 
-    List<Course> findCourseByCNameAndCNumber(String CName, int CNumber);
+    List<Course> findCourseByNameAndNumber(String Name, int Number);
 
-    List<Course> findCourseByCNumber(String CNumber);
+    List<Course> findCourseByNumber(String Number);
 
 }

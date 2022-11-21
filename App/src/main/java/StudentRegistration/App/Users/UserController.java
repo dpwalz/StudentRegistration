@@ -1,5 +1,7 @@
 package StudentRegistration.App.Users;
 
+import StudentRegistration.App.Student.Student;
+import StudentRegistration.App.Teacher.Teacher;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,14 +40,13 @@ public class UserController {
 
             jo.put("username", response.getUsername());
 
-            if (response.getStudent_flag().equals("1"))
+            if (response instanceof Student)
                 jo.put("endpoint", "student_view");
 
-            if (response.getTeacher_flag().equals("1"))
+            if (response instanceof Teacher)
                 jo.put("endpoint", "teacher_view");
 
             jo.put("status", HttpStatus.OK);
-            System.out.println("Here");
 
         } catch (Exception e) {
             jo.put("username", "");

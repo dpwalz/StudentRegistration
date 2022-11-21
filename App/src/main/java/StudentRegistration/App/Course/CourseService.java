@@ -20,6 +20,6 @@ public class CourseService {
 
     public List<Course> getCourses(String program, int id) {
         CourseID cid = new CourseID(id, program);
-        return courseRepository.findCourseByCNameAndCNumber(program, id);
+        return courseRepository.findCourseByNameAndNumber(program, id);
     }
 }

@@ -1,32 +1,40 @@
 package StudentRegistration.App.Users;
 
+import StudentRegistration.App.Student.Student;
+import StudentRegistration.App.Student.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class UserService {
 
-    private final UserRepository userRepository;
+    private final StudentService studentService;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserService(StudentService studentService) {
+        this.studentService = studentService;
     }
 
     public List<User> getAllUsers() {
-        return userRepository.findAll();
+        List<Student> students = studentService.getAllStudents();
+        List<User> users = new ArrayList<>();
+
+        for (Student student : students){
+            users.add((User) student);
+        }
+
+        return users;
     }
 
     public User checkLoginCredentials(Login credentials) throws RuntimeException {
-        Optional<User> entry = userRepository.findUserByUsername(credentials.getUsername());
-        User user = entry.get();
+        Optional<Student> student = studentService.findByUsername(credentials.getUsername());
+        User user = student.get();
 
-        System.out.println(user);
-
-        if (!user.getUser_password().equals(credentials.getPassword()))
+        if (!user.getPassword().equals(credentials.getPassword()))
             throw new RuntimeException("Password does not match");
 
         return user;

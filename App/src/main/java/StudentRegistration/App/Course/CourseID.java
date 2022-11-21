@@ -5,28 +5,28 @@ import java.util.Objects;
 
 public class CourseID implements Serializable {
 
-    private int CNumber;
-    private String CName;
+    private int name;
+    private String number;
 
     public CourseID() {
 
     }
 
-    public CourseID(int CNumber, String CName) {
-        this.CNumber = CNumber;
-        this.CName = CName;
+    public CourseID(int name, String number) {
+        this.name = name;
+        this.number = number;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof CourseID)) return false;
         CourseID courseID = (CourseID) o;
-        return CNumber == courseID.CNumber && CName.equals(courseID.CName);
+        return name == courseID.name && Objects.equals(number, courseID.number);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(CName, CNumber);
+        return Objects.hash(name, number);
     }
 }

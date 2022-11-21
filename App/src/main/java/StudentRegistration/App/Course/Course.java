@@ -2,51 +2,37 @@ package StudentRegistration.App.Course;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
-@Entity
-@Table(name = "course")
+import StudentRegistration.App.Section.Section;
+
+@Entity(name = "courses")
 @IdClass(CourseID.class)
 public class Course implements Serializable {
 
-
-    @SequenceGenerator(
-            name = "course_sequence",
-            sequenceName = "course_sequence",
-            allocationSize = 1
-    )
-
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "course_sequence"
-    )
+    @Id
+    @Column(name = "cname")
+    private String name;
 
     @Id
-    private String CName;
+    @Column(name = "cnumber")
+    private int number;
 
-    @Id
-    private int CNumber;
+    @OneToMany(targetEntity = Section.class, mappedBy = "course")
+    private Set<Section> sections = new HashSet<>();
 
-    public Course() {
-    }
-
-    public Course(String CName, int CNumber) {
-        this.CName = CName;
-        this.CNumber = CNumber;
-    }
-
-    public String getCName() {
-        return CName;
-    }
-
-    public void setCName(String CName) {
-        this.CName = CName;
-    }
-
-    public int getCNumber() {
-        return CNumber;
-    }
-
-    public void setCNumber(int CNumber) {
-        this.CNumber = CNumber;
-    }
+    @ManyToMany(targetEntity = Course.class, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "PREREQUISITES",
+            joinColumns = {
+                    @JoinColumn(name = "coursename", referencedColumnName = "cname"),
+                    @JoinColumn(name = "coursenumber", referencedColumnName = "cnumber")
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "prerequisitename", referencedColumnName = "cname"),
+                    @JoinColumn(name = "prerequisitenumber", referencedColumnName = "cnumber")
+            }
+    )
+    private Set<Course> prerequisites = new HashSet<>();
 }
