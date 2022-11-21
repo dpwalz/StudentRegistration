@@ -1,11 +1,15 @@
 package StudentRegistration.App.Users;
 
+import StudentRegistration.App.Section.Section;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity
+//@Entity
 @Table(name = "users")
-public class User implements Serializable {
+@MappedSuperclass
+public abstract class User implements Serializable {
 
     @Id
     @SequenceGenerator(
@@ -19,7 +23,7 @@ public class User implements Serializable {
             generator = "student_sequence"
     )
 
-    private String username;
+    public String username;
     private String user_password;
     private String FName;
     private String LName;
@@ -109,5 +113,10 @@ public class User implements Serializable {
     public String toString() {
         return this.username + " " + this.getUser_password();
     }
+
+
+
+
+
 
 }

@@ -22,8 +22,8 @@
 //    )
 //
 //    @Id
-//    @OneToOne(mappedBy= "USERS")
-//    private User student_username;
+////    @OneToOne(mappedBy= "USERS")
+//    private String student_username;
 //
 //    @Id
 //    private String course_program;
