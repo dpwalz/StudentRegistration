@@ -10,15 +10,22 @@ let list = document.getElementById("stuList");
 let dropList = document.getElementById("dropList");
 let dropList2 = document.getElementById("dropList");
 
-course.forEach((item) => {
+// TODO: When the api is available remove update view and use populate view.
+// populateView();
+updateView();
 
-    let li = document.createElement("li");
-    let section = makeSection(item);
-    li.innerText = item;
-    sectionlist.appendChild(li);
-    li.appendChild(section);
+function updateView() {
+    course.forEach((item) => {
 
-});
+        let li = document.createElement("li");
+        let section = makeSection(item);
+        li.innerText = item;
+        sectionlist.appendChild(li);
+        li.appendChild(section);
+    
+    });
+}
+
 
 
 
@@ -31,7 +38,7 @@ function makeSection(item){
         if (section.checked) {
           getStudents(section.value);
         }
-      };
+    };
     return section;
 }
 
@@ -53,7 +60,6 @@ function addGrades(){
     
     let students = document.getElementById("stuList").querySelectorAll("li");
     let courses = document.querySelectorAll("input[name=courses]");
-    let studentList = '';
     let studentObj = [];
     let current_course = [];
     let re = /.*/;
@@ -70,16 +76,18 @@ function addGrades(){
         let grade = grades.options[grades.options.selectedIndex].value;
         let courseParse = item.innerText.split(" ");
         let courseDict = {
-            'CourseName': current_course[0],
-            'CourseID': current_course[1],
-            'CourseSection': current_course[2],
-            'StudentName': courseParse[0],
-            'StudentID': courseParse[1].match(re)[0],
-            'Grade': grade
+            'username': localStorage.token,
+            'coursename': current_course[0],
+            'courseid': current_course[1],
+            'coursesection': current_course[2],
+            'studentname': courseParse[0],
+            'studentid': courseParse[1].match(re)[0],
+            'grade': grade
         };
         studentObj.push(courseDict);
-        // studentList += name + 'grade:' + grade + '\n';
     });
+    // TODO: Use fetch function to get and update the teacher view. 
+    // submitAndUpdate(studentObj);
     console.log(studentObj);
 }
 
@@ -98,4 +106,48 @@ function makeGrades(grade) {
         options.appendChild(new_option);
     });
     return options;
+}
+
+function populateView(){
+
+    fetch("")
+    .then((response) => response.json())
+    .then((json) => {
+        //TODO: This must be updated to add the data to the list. 
+        // Depends on the format of the API payload. 
+        json.forEach((item) => {
+        let course = '';
+        course = item.cname + " " + item.cnumber;
+        courses_view.push(course);
+    }
+
+    )})
+    .then(() => {
+        updateView();
+    })
+    .catch(error => console.log(error));
+}
+
+function submitAndUpdate(studentObj){
+
+    fetch("", {
+        method: "PUT",
+        headers:{"Content-Type":"application/json"},
+        body: JSON.stringify(studentObj),
+    })
+    .then((response) => response.json())
+    .then((json) => {
+        //TODO: This must be updated to add the data to the list. 
+        // Depends on the format of the API payload. 
+        json.forEach((item) => {
+        let course = '';
+        course = item.cname + " " + item.cnumber;
+        courses_view.push(course);
+    }
+
+    )})
+    .then(() => {
+        updateView();
+    })
+    .catch(error => console.log(error));
 }
