@@ -95,7 +95,7 @@ function addCourse(courseDict){
 
   json.forEach((item) => {
       let course = '';
-      course = item.cname + " " + item.cnumber +item.csection;
+      course = item.cname + " " + item.cnumber + item.csection;
       enrolled_courses.push(course);
     }
 
@@ -104,23 +104,19 @@ function addCourse(courseDict){
 }
 
 
-
-
-
-
 function populateMyCurrentCourses(){
-  fetch("http://localhost:8080/api/v1/registration",
+  fetch("http://localhost:8080/api/v1/registration/USER/" + sessionStorage.token + "/YEAR/2022",
   {
 //    method: "GET",
 //    headers:{"Content-Type":"application/json"},
-//    body: JSON.stringify(loginDict),
+//    body: JSON.stringify(sessionStorage.token),
   })
   .then((response) => response.json())
   .then((json) => {
 
   json.forEach((item) => {
       let course = '';
-      course = item.cname + " " + item.cnumber + item.csection;
+      course = item.cname + " " + item.cnumber+ "  Section Num: " + item.sectionID + "  ";
       enrolled_courses.push(course);
   })}).then(() => {
           displayEnrolled()})
@@ -128,7 +124,7 @@ function populateMyCurrentCourses(){
   }
 
 function populateCata(){
-
+//need to capture section here
   fetch("http://localhost:8080/api/v1/course",
   {
 //    method: "GET",
