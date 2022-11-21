@@ -2,6 +2,8 @@ package StudentRegistration.App.Users;
 
 import StudentRegistration.App.Student.Student;
 import StudentRegistration.App.Student.StudentService;
+import StudentRegistration.App.Teacher.Teacher;
+import StudentRegistration.App.Teacher.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +15,12 @@ import java.util.Optional;
 public class UserService {
 
     private final StudentService studentService;
+    private final TeacherService teacherService;
 
     @Autowired
-    public UserService(StudentService studentService) {
+    public UserService(StudentService studentService, TeacherService teacherService) {
         this.studentService = studentService;
+        this.teacherService = teacherService;
     }
 
     public List<User> getAllUsers() {
@@ -31,8 +35,18 @@ public class UserService {
     }
 
     public User checkLoginCredentials(Login credentials) throws RuntimeException {
+
         Optional<Student> student = studentService.findByUsername(credentials.getUsername());
-        User user = student.get();
+        Optional<Teacher> teacher = teacherService.findByUsername(credentials.getUsername());
+        User user;
+
+        if (student.isPresent())
+            user = student.get();
+        else if (teacher.isPresent()) {
+            user = teacher.get();
+        } else {
+            throw new RuntimeException("Username not present");
+        }
 
         if (!user.getPassword().equals(credentials.getPassword()))
             throw new RuntimeException("Password does not match");
