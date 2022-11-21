@@ -8,32 +8,18 @@ function formSubmit(e) {
     username: document.getElementById('username').value,
     password: document.getElementById('password').value
   }
-
-
-//   const formData = new FormData();
-//   formData.append(
-//     'username',
-//     document.querySelector('input[name="username"]').value
-//   )
-//   formData.append(
-//     'password',
-//     document.querySelector('input[name="pass"]').value
-//   )
-
   fetch("http://localhost:8080/api/v1/user",
   {
     method: "PUT",
     headers:{"Content-Type":"application/json"},
     body: JSON.stringify(loginDict),
   })
-  .then((response) => response.text())
-  .then((text) => {console.log(text)})
-  //.then((text) => {window.location.href = "http://localhost:8080/" + text + ".html"})
-
-  // .then(response => window.location.href = "http://localhost:8080/" + response)
-  .catch(error => console.log(error));
-
-
+  .then((response) => response.json())
+  .then((json) => {
+      localStorage.setItem("token", json.username);
+      window.location.href = "http://localhost:8080/" + json.endpoint; 
+   })
+  .catch(error => alert('Username or Password is incorrect.'));
 }
 
 function login(response){
