@@ -137,8 +137,10 @@ function populateCata(){
   })
   .then((response) => response.json())
   .then((json) => {
+      console.log("here")
 
     json.forEach((item) => {
+        console.log(item)
         let course = '';
         course = item.cname + " " + item.cnumber;
         courses_view.push(course);

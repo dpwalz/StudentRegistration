@@ -35,4 +35,44 @@ public class Course implements Serializable {
             }
     )
     private Set<Course> prerequisites = new HashSet<>();
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public Set<Section> getSections() {
+        return sections;
+    }
+
+    public void setSections(Set<Section> sections) {
+        this.sections = sections;
+    }
+
+    public Set<Course> getPrerequisites() {
+        return prerequisites;
+    }
+
+    public void setPrerequisites(Set<Course> prerequisites) {
+        this.prerequisites = prerequisites;
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "name='" + name + '\'' +
+                ", number=" + number +
+                '}';
+    }
 }

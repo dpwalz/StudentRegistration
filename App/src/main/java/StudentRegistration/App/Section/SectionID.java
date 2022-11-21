@@ -8,6 +8,10 @@ import java.util.Objects;
 public class SectionID implements Serializable {
 
     private Course course;
+
+    public SectionID() {
+    }
+
     private int section_number;
     private int section_year;
 
