@@ -48,8 +48,6 @@ public class CourseController {
             jo = new JSONObject();
             jo.put("cname", c.getName());
             jo.put("cnumber", c.getNumber());
-
-
             jo.put("sections", c.getSectionID());
             ja.put(jo);
         }

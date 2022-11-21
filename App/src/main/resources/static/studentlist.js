@@ -57,12 +57,15 @@ function addButton(item){
         result = confirm("Are you sure you want to add the course?")
         if (result == true){
              let courseParse = item.split(" ");
+             console.log(courseParse)
              let courseDict = {
-                     'username': localStorage.token,
-                     'CourseName': courseParse[0],
-                     'CourseID': courseParse[1],
-                     'Section': courseParse[2]
-                 };
+                 "course" : {
+                     'name': courseParse[0],
+                     'number': courseParse[1],
+                 },
+                 'section_number': 1,
+                 'section_year': "2022"
+             };
 
         console.log(courseDict);
         addCourse(courseDict);
@@ -96,9 +99,9 @@ function searchSome(){
 }
 
 function addCourse(courseDict){
-  fetch("http://localhost:8080/api/v1/course",
+  fetch("http://localhost:8080/api/v1/student/" + localStorage.token,
   {
-    method: "PUT",
+    method: "POST",
     headers:{"Content-Type":"application/json"},
     body: JSON.stringify(courseDict),
   })
