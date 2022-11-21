@@ -27,4 +27,11 @@ public class WebController2 {
         return modelAndView;
     }
 
+    @RequestMapping("/teacher_view")
+    public ModelAndView teacher() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("teacher_view.html");
+        return modelAndView;
+    }
+
 }
