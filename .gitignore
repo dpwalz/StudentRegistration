@@ -34,3 +34,5 @@ build/
 
 ### Application Properties ###
 App/src/main/resources/application.properties
+*.properties
+env.properties
