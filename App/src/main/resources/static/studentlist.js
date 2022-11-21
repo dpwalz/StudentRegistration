@@ -3,6 +3,8 @@
 let courses_view = [];
 let enrolled_courses = [];
 
+//if (sessionStorage.token != ""){
+//    window.location.href = "http://localhost:8080/"};
 //currently enrolled
 let list = document.getElementById("myList");
 //course searcher
@@ -83,14 +85,14 @@ function addCourse(courseDict){
   {
     method: "PUT",
     headers:{"Content-Type":"application/json"},
-    body: JSON.stringify(item),
+    body: JSON.stringify(courseDict),
   })
   .then((response) => response.json())
   .then((json) => {
 
   json.forEach((item) => {
       let course = '';
-      course = item.cname + " " + item.cnumber;
+      course = item.cname + " " + item.cnumber +item.csection;
       enrolled_courses.push(course);
     }
 
@@ -107,9 +109,7 @@ function logOut(){
 
 
 function populateMyCurrentCourses(){
-//TODO MAKE SURE TO CHANGE THIS
-//  fetch("http://localhost:8080/api/v1/registration",
-  fetch("http://localhost:8080/api/v1/course",
+  fetch("http://localhost:8080/api/v1/registration",
   {
 //    method: "GET",
 //    headers:{"Content-Type":"application/json"},
@@ -120,7 +120,7 @@ function populateMyCurrentCourses(){
 
   json.forEach((item) => {
       let course = '';
-      course = item.cname + " " + item.cnumber;
+      course = item.cname + " " + item.cnumber + item.csection;
       enrolled_courses.push(course);
   })}).then(() => {
           displayEnrolled()})
@@ -140,7 +140,7 @@ function populateCata(){
 
     json.forEach((item) => {
         let course = '';
-        course = item.cname + " " + item.cnumber;
+        course = item.cname + " " + item.cnumber + item.csection;
         courses_view.push(course);
     }
 
