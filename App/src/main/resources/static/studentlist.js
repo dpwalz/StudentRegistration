@@ -13,6 +13,7 @@ console.log(enrolled_courses);
 displayEnrolled();
 populateCata();
 console.log(courses_view);
+
 function displayEnrolled(){
         document.getElementById("myList").innerHTML = "";
         enrolled_courses.forEach((item) => {
@@ -55,26 +56,14 @@ function addButton(item){
                      'Section': courseParse[2]
                  };
 
-             console.log(courseDict);
-//        addCourse(courseDict);
-//        displayEnrolled()
-//        courseList.removeChild(li)
+        console.log(courseDict);
+        addCourse(courseDict);
         };
         }
 
     return btn;
 
 }
-
-function addTOList(item){
-
-    let li = document.createElement("li");
-    li.innerText = item;
-    dropList.appendChild(dropItem);
-    list.removeChild(li);
-
-}
-
 
 function searchAll(){
 
@@ -87,7 +76,7 @@ function searchAll(){
 });
 }
 
-function addCourse(item){
+function addCourse(courseDict){
   fetch("http://localhost:8080/api/v1/course",
   {
     method: "PUT",
@@ -106,8 +95,6 @@ function addCourse(item){
 )})
   .catch(error => console.log(error));
 }
-
-
 
 
 function populateMyCurrentCourses(){
