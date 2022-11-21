@@ -142,7 +142,7 @@ function populateCata(){
     json.forEach((item) => {
         console.log(item)
         let course = '';
-        course = item.name + " " + item.number + item.section;
+        course = item.cname + " " + item.cnumber;
         courses_view.push(course);
     }
 
