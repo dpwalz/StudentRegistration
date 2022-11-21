@@ -16,7 +16,6 @@ function formSubmit(e) {
   })
   .then((response) => response.json())
   .then((json) => {
-       console.log(json)
       sessionStorage.setItem("token", json.username);
       window.location.href = "http://localhost:8080/" + json.endpoint; 
    })
