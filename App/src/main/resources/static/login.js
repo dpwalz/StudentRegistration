@@ -16,7 +16,7 @@ function formSubmit(e) {
   })
   .then((response) => response.json())
   .then((json) => {
-      localStorage.setItem("token", json.username);
+      sessionStorage.setItem("token", json.username);
       window.location.href = "http://localhost:8080/" + json.endpoint; 
    })
   .catch(error => alert('Username or Password is incorrect.'));
