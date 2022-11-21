@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "registrations")
+@IdClass(RegistrationId.class)
 public class Registration implements Serializable {
 
     @Id
@@ -18,10 +19,10 @@ public class Registration implements Serializable {
     @Id
     @ManyToOne(targetEntity = Section.class)
     @JoinColumns ({
-        @JoinColumn(name = "coursename"),
-        @JoinColumn(name = "coursenumber"),
-        @JoinColumn(name = "sectionnumber"),
-        @JoinColumn(name = "sectionyear")
+        @JoinColumn(name = "coursename", referencedColumnName = "coursename"),
+        @JoinColumn(name = "coursenumber", referencedColumnName = "coursenumber"),
+        @JoinColumn(name = "sectionnumber", referencedColumnName = "sectionnumber"),
+        @JoinColumn(name = "sectionyear", referencedColumnName = "sectionyear")
     })
     private Section section;
 
