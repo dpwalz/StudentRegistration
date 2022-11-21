@@ -5,10 +5,6 @@ let coursedict = {
     "ENSF 593 2": ["Bob.Bigelow 11234 ", "Brock.Lesner 123456789 C", "Tina.Turner 12345799"]
 }
 
-// add a div for the course and sections with radio button, 
-// add a div for students that pops up when radio buttons are pressed. 
-// get section from radio buttons and students and grades from other div. 
-
 let sectionlist = document.getElementById("sectionList");
 let list = document.getElementById("stuList");
 let dropList = document.getElementById("dropList");
