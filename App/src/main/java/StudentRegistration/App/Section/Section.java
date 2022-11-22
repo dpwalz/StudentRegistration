@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity(name = "sections")
@@ -75,5 +76,18 @@ public class Section implements Serializable {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Section)) return false;
+        Section section = (Section) o;
+        return section_number == section.section_number && section_year == section.section_year && course.equals(section.course);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(section_number, section_year, course);
     }
 }
