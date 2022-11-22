@@ -153,8 +153,6 @@ function populateCata(){
   })
   .then((response) => response.json())
   .then((json) => {
-      console.log(json)
-
     json.forEach((item) => {
         console.log(item)
         let course = '';
