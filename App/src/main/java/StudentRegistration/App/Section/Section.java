@@ -3,6 +3,7 @@ package StudentRegistration.App.Section;
 import StudentRegistration.App.Course.Course;
 import StudentRegistration.App.Registration.Registration;
 import StudentRegistration.App.Teacher.Teacher;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;

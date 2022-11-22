@@ -1,5 +1,6 @@
 package StudentRegistration.App.Course;
 
+import StudentRegistration.App.Section.Section;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ public class CourseController {
     public String getCourse() {
 
         List<Course> courses = courseService.getAllCourses();
+
         return toJSON(courses);
 
     }
@@ -46,6 +48,7 @@ public class CourseController {
             jo = new JSONObject();
             jo.put("cname", c.getName());
             jo.put("cnumber", c.getNumber());
+            jo.put("sections", c.getSectionID());
             ja.put(jo);
         }
 

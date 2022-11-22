@@ -1,5 +1,6 @@
 package StudentRegistration.App.Student;
 
+import StudentRegistration.App.Section.Section;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,4 +25,7 @@ public class StudentService {
         return studentRepository.findStudentByUsername(username);
     }
 
+    public void register(Section section, String username) {
+
+    }
 }
