@@ -6,6 +6,7 @@
 let courses_view = [];
 let enrolled_courses = [];
 let search_view = [];
+let sections_dict = {};
 
 //if (sessionStorage.token != ""){
 //    window.location.href = "http://localhost:8080/"};
@@ -49,7 +50,7 @@ function dropButton(item){
     return btn;
 }
 
-function addButton(item){
+function addButton(item, sections){
 
     let btn = document.createElement("button");
     btn.appendChild(document.createTextNode("Add Course"));
@@ -63,7 +64,7 @@ function addButton(item){
                      'name': courseParse[0],
                      'number': courseParse[1],
                  },
-                 'section_number': 1,
+                 'section_number': sections.options[sections.options.selectedIndex].value,
                  'section_year': "2022"
              };
 
@@ -80,9 +81,11 @@ function searchAll(){
         document.getElementById("courseList").innerHTML = "";
         courses_view.forEach((item) => {
         let li = document.createElement("li");
-        let btn = addButton(item)
-        li.innerText = item;
+        let section = makeSections(sections_dict[item]);
+        let btn = addButton(item, section)
+        li.innerText = `${item} Section Num: `;
         courseList.appendChild(li);
+        li.appendChild(section);
         li.appendChild(btn);
 });
 }
@@ -91,9 +94,11 @@ function searchSome(){
   document.getElementById("courseList").innerHTML = "";
   search_view.forEach((item) => {
   let li = document.createElement("li");
-  let btn = addButton(item)
-  li.innerText = item;
+  let section = makeSections(sections_dict[item]);
+  let btn = addButton(item, section)
+  li.innerText = `${item} Section Num: `;
   courseList.appendChild(li);
+  li.appendChild(section);
   li.appendChild(btn);
 });
 }
@@ -148,13 +153,14 @@ function populateCata(){
   })
   .then((response) => response.json())
   .then((json) => {
-      console.log("here")
+      console.log(json)
 
     json.forEach((item) => {
         console.log(item)
         let course = '';
         course = item.cname + " " + item.cnumber;
         courses_view.push(course);
+        sections_dict[course] = item.sections;
     }
 
     )})
@@ -175,5 +181,17 @@ function searchClasses(searchBar){
   // console.log(search_view);
   searchSome();
 
+}
+
+function makeSections(sections) {
+  let options = document.createElement("select");
+  options.name = 'coursesections';
+  sections.forEach((item) => {
+      let new_option = document.createElement("option");
+      new_option.value = item;
+      new_option.innerText = item;
+      options.appendChild(new_option);
+  });
+  return options;
 }
 
