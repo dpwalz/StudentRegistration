@@ -79,6 +79,19 @@ public class Course implements Serializable {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Course)) return false;
+        Course course = (Course) o;
+        return number == course.number && Objects.equals(name, course.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, number);
+    }
+
+    @Override
     public String toString() {
         return "Course{" +
                 "name='" + name + '\'' +

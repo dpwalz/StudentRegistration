@@ -99,7 +99,7 @@ function searchSome(){
 }
 
 function addCourse(courseDict){
-  fetch("http://localhost:8080/api/v1/student/" + localStorage.token,
+  fetch("http://localhost:8080/api/v1/registration/STUDENT/" + localStorage.token,
   {
     method: "POST",
     headers:{"Content-Type":"application/json"},

@@ -32,6 +32,22 @@ public class RegistrationController {
         return toJSON(registrations);
     }
 
+
+    @PostMapping(path = "STUDENT/{username}")
+    public String addRegistration(@RequestBody Section section, @PathVariable("username") String username) {
+
+        System.out.println(section.getCourse().getName());
+        System.out.println(section.getCourse().getNumber());
+        System.out.println(section.getSection_number());
+        System.out.println(section.getSection_year());
+        System.out.println(username);
+
+        registrationService.addRegistration(section, username);
+
+        return "Pass";
+    }
+
+
     private String toJSON(List<Registration> registrations) {
 
         JSONObject jo;

@@ -13,4 +13,5 @@ public interface RegistrationRepository extends JpaRepository<Registration, Regi
 
     @Query(value = "SELECT r FROM Registration r WHERE r.student.username = ?1 and r.section.section_year = ?2")
     List<Registration> findRegistrationByStudentAndYear(String student, int year);
+
 }

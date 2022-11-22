@@ -1,5 +1,6 @@
 package StudentRegistration.App.Registration;
 
+import StudentRegistration.App.Section.Section;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,15 +19,19 @@ public class RegistrationService {
 
 
     public List<Registration> getRegistrationsByYear(String username, int year) {
-//        List<Registration> allRegistrations = registrationRepository.findRegistrationByStudent(username);
-//        List<Registration> yearRegistrations = new ArrayList<>();
-//
-//        for (Registration r: allRegistrations) {
-//            if (r.getSection().getSection_year() == year) {
-//                yearRegistrations.add(r);
-//            }
-//        }
         return registrationRepository.findRegistrationByStudentAndYear(username,year);
+    }
 
+    public void addRegistration(Section section, String username) {
+        List<Registration> studentsRegistrations = registrationRepository.findRegistrationByStudentAndYear(username, section.getSection_year());
+
+        for (Registration r: studentsRegistrations) {
+            System.out.println(r.getSection().getCourse().getNumber());
+            System.out.println(section.getCourse().getNumber());
+            if (r.getSection().equals(section)) {
+                throw new RuntimeException("Student already registered in this course");
+            }
+            System.out.println("Not in course");
+        }
     }
 }

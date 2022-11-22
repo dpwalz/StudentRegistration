@@ -22,19 +22,5 @@ public class StudentController {
         return studentService.getAllStudents();
     }
 
-    @PostMapping(path = "/{username}")
-    public String addRegistration(@RequestBody Section section, @PathVariable("username") String username) {
-
-//        System.out.println(section.getCourse().getName());
-//        System.out.println(section.getCourse().getNumber());
-//        System.out.println(section.getSection_number());
-//        System.out.println(section.getSection_year());
-//        System.out.println(username);
-
-        studentService.register(section, username);
-
-        return "Pass";
-    }
-
 
 }
