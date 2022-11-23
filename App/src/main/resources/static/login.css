@@ -4,8 +4,6 @@ body {
    background-repeat: no-repeat; /* Do not repeat the image */
    background-size: cover; /* Resize the background image to cover the entire container */
      font-family: sans-serif, Arial, Helvetica ;
-
-
 }
 
 div.form {
@@ -17,7 +15,7 @@ div.form {
       padding: 10px;
       width: 40%;
       background: rgba(255, 255, 255, 0.7);
-      opacity 50;
+      opacity: 50;
       border-radius: 20px;
       border:10px solid Green;
       border-style: outset;
@@ -49,7 +47,7 @@ div.form {
 }
 
 #logintext {
-    text-align center;
+    text-align: center;
 
 }
 

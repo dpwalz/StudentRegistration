@@ -5,52 +5,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="./resources/css/index.css" type="text/css"> -->
+    <link rel="stylesheet" href="studentview.css">
     <title>Student Course Portal</title>
 </head>
 
 <script src="general.js"></script>
-
-<body> 
+<body>
+    <div class="form"> 
     <h1>Student Portal</h1>
 
     <!-- Current courses here-->
-    <div>
-        <label for="mylist">Current Enrolled Courses</label>
-        <ul name ="mylist" id="myList"></ul>
-
+<div class="row">
+    <div class="col">
+        <label class="labels" for="mylist">Current Enrolled Courses</label>
+        <div class="scrollable">
+            <ul name ="mylist" id="myList"></ul>
+        </div>
     </div>
 <br>
 <br>
 <br>
 <br>
 <div>
-    <div>
-        <label for="searchall">See All Courses</label><br>
+    <div class="col">
+        <label class="labels" for="searchall">See All Courses</label><br>
         <button onclick="searchAll()" type="button" id="searchall">Search All</button><br><br><br>
 
 
         <form>
-            <label for="searchname">Search For A Course</label><br>
-            <input type="text" id="searchname" name="searchname" placeholder="Name ID (ENSF 607)" onkeyup="searchClasses(this)" >
+            <label class="labels" for="searchname">Search For A Course</label><br>
+            <input class="searchable" type="text" id="searchname" name="searchname" placeholder="Name ID (ENSF 607)" onkeyup="searchClasses(this)" >
             <!-- <input type="text" id="searchcode" name="searchcode" placeholder="coursecode (607)"> -->
-            <button type="button" id="searchone">Search</button>
+            <!-- <button type="button" id="searchone">Search</button> -->
         </form>
             <br>
-            <label for="courselist">Results</label>
-            <ul name ="courselist" id="courseList"></ul>
+            <label class="labels" for="courselist">Results</label>
+            <ul class="scrollable" name ="courselist" id="courseList"></ul>
     </div>
 
 <br>
 <br>
 </div>
 <!-- required minlength="4" maxlength="8" size="10" -->
-
+</div>
     <br>
     <br>
     <br>
     <br>
-    <Button onclick="logOut()">Log Out</Button>
+    <div class="buttondiv">
+    <Button  id="logout" onclick="logOut()">Log Out</Button>
     <script src="studentlist.js"></script>
-    
-    
+    </div>
+</div>
 </body>

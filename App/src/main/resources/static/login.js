@@ -16,14 +16,27 @@ function formSubmit(e) {
   })
   .then((response) => response.json())
   .then((json) => {
-      sessionStorage.setItem("token", json.username);
-      window.location.href = "http://localhost:8080/" + json.endpoint; 
+      // console.log(json);
+      if(json.status === 27){
+        alert('Username or Password not Found!');
+      } else {
+        sessionStorage.setItem("token", json.username);
+        window.location.href = "http://localhost:8080/" + json.endpoint; 
+      }
+      
    })
   .catch(error => {
-    console.log(error);
+    test = new FetchError(error);
+    console.log(test.message);
   });
 }
 
-function login(response){
+class FetchError extends Error {
+  constructor(orig) {
+      super();
+      this.message = "fetch error";
+      this.details = orig;
+  }
 }
+
 
