@@ -2,6 +2,7 @@ package StudentRegistration.App.Registration;
 
 import StudentRegistration.App.Section.Section;
 import StudentRegistration.App.Student.Student;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,6 +17,7 @@ public class Registration implements Serializable {
     @JoinColumn(name = "studentusername", referencedColumnName = "username")
     private Student student;
 
+
     @Id
     @ManyToOne(targetEntity = Section.class)
     @JoinColumns ({
@@ -28,6 +30,10 @@ public class Registration implements Serializable {
 
     @Column(name = "Grade")
     private String grade;
+
+
+    public Registration() {
+    }
 
 
     public Student getStudent() {

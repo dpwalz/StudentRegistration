@@ -1,38 +1,64 @@
 package StudentRegistration.App.Registration;
 
+import StudentRegistration.App.Course.Course;
 import StudentRegistration.App.Section.Section;
+import StudentRegistration.App.Section.SectionID;
+import StudentRegistration.App.Section.SectionRepository;
+import StudentRegistration.App.Student.Student;
+import StudentRegistration.App.Student.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class RegistrationService {
 
     private final RegistrationRepository registrationRepository;
+    private final StudentRepository studentRepository;
+    private final SectionRepository sectionRepository;
 
     @Autowired
-    public RegistrationService(RegistrationRepository registrationRepository) {
+    public RegistrationService(RegistrationRepository registrationRepository, StudentRepository studentRepository, SectionRepository sectionRepository) {
         this.registrationRepository = registrationRepository;
+        this.studentRepository = studentRepository;
+        this.sectionRepository = sectionRepository;
     }
 
 
     public List<Registration> getRegistrationsByYear(String username, int year) {
-        return registrationRepository.findRegistrationByStudentAndYear(username,year);
+        return registrationRepository.findRegistrationByStudent_UsernameAndSection_Sectionyear(username, year);
     }
 
     public void addRegistration(Section section, String username) {
-        List<Registration> studentsRegistrations = registrationRepository.findRegistrationByStudentAndYear(username, section.getSection_year());
 
-        for (Registration r: studentsRegistrations) {
-            System.out.println(r.getSection().getCourse().getNumber());
-            System.out.println(section.getCourse().getNumber());
-            if (r.getSection().equals(section)) {
-                throw new RuntimeException("Student already registered in this course");
-            }
-            System.out.println("Not in course");
+        Student student = studentRepository.findStudentByUsername(username).get();
+
+        if (student.getEnrolled_courses().size() >= 6) {
+            throw new RuntimeException("Cannot enroll in more then 6 classes");
         }
+
+
+        List<Registration> previousRegistrations = registrationRepository.findRegistrationByStudentAndSection_Course(student, section.getCourse());
+
+
+        for (Registration r: previousRegistrations) {
+
+            if (r.getSection().getSectionyear() == 2022) {
+                throw new RuntimeException("Cannot retake course you have already passed");
+            }
+
+            if (!r.getGrade().equals("F")) {
+                throw new RuntimeException("Cannot retake course you have already passed");
+            }
+        }
+
+        registrationRepository.insertRegistration(username, section.getCourse().getName(), section.getCourse().getNumber(), section.getSectionnumber(), section.getSectionyear(), "I");
+
     }
 
     public List<Registration> deleteRegistration(Section section, String username) {

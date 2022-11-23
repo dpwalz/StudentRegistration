@@ -82,10 +82,8 @@ function addButton(item, sections){
         console.log(courseDict);
         addCourse(courseDict);
         };
-        }
-
+    }
     return btn;
-
 }
 
 function searchAll(){

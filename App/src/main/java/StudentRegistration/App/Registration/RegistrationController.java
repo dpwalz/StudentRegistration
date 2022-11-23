@@ -2,13 +2,14 @@ package StudentRegistration.App.Registration;
 
 import StudentRegistration.App.Course.Course;
 import StudentRegistration.App.Section.Section;
-import StudentRegistration.App.Student.Student;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping(path = "api/v1/registration")
@@ -36,15 +37,21 @@ public class RegistrationController {
     @PostMapping(path = "STUDENT/{username}")
     public String addRegistration(@RequestBody Section section, @PathVariable("username") String username) {
 
-        System.out.println(section.getCourse().getName());
-        System.out.println(section.getCourse().getNumber());
-        System.out.println(section.getSection_number());
-        System.out.println(section.getSection_year());
-        System.out.println(username);
+        JSONObject jo = new JSONObject();
 
-        registrationService.addRegistration(section, username);
+        try {
+            registrationService.addRegistration(section, username);
+            jo.put("status", HttpStatus.OK);
+            jo.put("message", "Registration Successful");
+        } catch (NoSuchElementException e) {
+            jo.put("status",  HttpStatus.NOT_FOUND.ordinal());
+            jo.put("message", "Invalid Username Provided");
+        } catch (RuntimeException e) {
+            jo.put("status", HttpStatus.NOT_FOUND.ordinal());
+            jo.put("message", e.getMessage());
+        }
 
-        return "Pass";
+        return jo.toString();
     }
 
     @DeleteMapping(path = "STUDENT/{username}")
@@ -67,7 +74,7 @@ public class RegistrationController {
             Course course = section.getCourse();
             jo.put("cname", course.getName());
             jo.put("cnumber", course.getNumber());
-            jo.put("sectionID", section.getSection_number());
+            jo.put("sectionID", section.getSectionnumber());
             ja.put(jo);
         }
 

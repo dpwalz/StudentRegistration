@@ -10,10 +10,6 @@ import java.util.Objects;
 public class RegistrationId implements Serializable {
     private Student student;
     private Section section;
-//    private String coursename;
-//    private int coursenumber;
-//    private int sectionnumber;
-//    private int sectionyear;
 
     public RegistrationId() {
     }
@@ -31,7 +27,21 @@ public class RegistrationId implements Serializable {
         return Objects.equals(student, that.student) && Objects.equals(section, that.section);
     }
 
+    public Student getStudent() {
+        return student;
+    }
 
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Section getSection() {
+        return section;
+    }
+
+    public void setSection(Section section) {
+        this.section = section;
+    }
 
     @Override
     public int hashCode() {
