@@ -22,6 +22,15 @@ public class Student extends User implements Serializable {
     @OneToMany(targetEntity = Registration.class, mappedBy = "student", cascade = CascadeType.ALL)
     private Set<Registration> enrolled_courses = new HashSet<>();
 
+    public Student() {
+    }
+
+    public Student(int studentID, String major, Set<Registration> enrolled_courses) {
+        this.studentID = studentID;
+        this.major = major;
+        this.enrolled_courses = enrolled_courses;
+    }
+
     public int getStudentID() {
         return studentID;
     }
@@ -44,6 +53,10 @@ public class Student extends User implements Serializable {
 
     public void setEnrolled_courses(Set<Registration> enrolled_courses) {
         this.enrolled_courses = enrolled_courses;
+    }
+
+    public void addEnrolled_course(Registration r) {
+        this.enrolled_courses.add(r);
     }
 
 }

@@ -57,7 +57,12 @@ VALUES
 ("ENSF", "608"),
 ("ENSF", "611"),
 ("ENSF", "612"),
-("ENSF", "614");
+("ENSF", "614"),
+("ENEL", "645"),
+("ENGG", "683"),
+("ENSF", "609"),
+("ENSF", "610"),
+("SENG", "637");
 
 SELECT * FROM COURSES;
 
@@ -96,7 +101,6 @@ CREATE TABLE SECTIONS (
 	foreign key (Teacher) references TEACHERS (username) 
 );
 
-Select * from SECTIONS;
 
 INSERT INTO SECTIONS (CourseName, CourseNumber, SectionNumber, SectionYear, Teacher)
 VALUES
@@ -111,7 +115,12 @@ VALUES
 ("ENSF", "612", 2, 2022, "jakaur"),
 ("ENSF", "614", 2, 2022, "jakaur"),
 ("ENSF", "612", 3, 2022, "jakaur"),
-("ENSF", "614", 3, 2022, "jakaur");
+("ENSF", "614", 3, 2022, "jakaur"),
+("ENEL", "645", 1, 2022, "jakaur"),
+("ENGG", "683", 1, 2022, "jakaur"),
+("ENSF", "609", 1, 2022, "jakaur"),
+("ENSF", "610", 1, 2022, "jakaur"),
+("SENG", "637", 1, 2022, "jakaur");
 
 Select * from SECTIONS;
 

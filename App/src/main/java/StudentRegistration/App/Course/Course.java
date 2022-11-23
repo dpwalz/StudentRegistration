@@ -71,7 +71,7 @@ public class Course implements Serializable {
         List<Integer> sections = new ArrayList<>();
 
         for (Section s: getSections()) {
-            sections.add(s.getSection_number());
+            sections.add(s.getSectionnumber());
         }
 
         Collections.sort(sections);

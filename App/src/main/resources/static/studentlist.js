@@ -64,17 +64,15 @@ function addButton(item, sections){
                      'name': courseParse[0],
                      'number': courseParse[1],
                  },
-                 'section_number': sections.options[sections.options.selectedIndex].value,
-                 'section_year': "2022"
+                 'sectionnumber': 1,//sections.options[sections.options.selectedIndex].value+1,
+                 'sectionyear': "2022"
              };
 
         console.log(courseDict);
         addCourse(courseDict);
         };
-        }
-
+    }
     return btn;
-
 }
 
 function searchAll(){
@@ -104,7 +102,8 @@ function searchSome(){
 }
 
 function addCourse(courseDict){
-  fetch("http://localhost:8080/api/v1/registration/STUDENT/" + localStorage.token,
+    console.log(sessionStorage.token)
+  fetch("http://localhost:8080/api/v1/registration/STUDENT/" + sessionStorage.token,
   {
     method: "POST",
     headers:{"Content-Type":"application/json"},
