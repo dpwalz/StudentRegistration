@@ -18,17 +18,16 @@ div.form {
     margin-top:200px;
     margin-left:auto;
     margin-right:auto;
-
-      padding: 10px;
-      width: 80%;
-      background: rgba(255, 255, 255, 0.7);
-      opacity: 50;
-      border-radius: 20px;
-      border:10px solid Green;
-      border-style: outset;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+    padding: 10px;
+    width: 80%;
+    background: rgba(255, 255, 255, 0.7);
+    opacity: 50;
+    border-radius: 20px;
+    border:10px solid Green;
+    border-style: outset;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 

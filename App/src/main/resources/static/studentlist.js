@@ -47,8 +47,8 @@ function dropButton(item){
                   'name': courseParse[0],
                   'number': courseParse[1],
               },
-              'section_number': courseParse.at(-1),
-              'section_year': "2022",
+              'sectionnumber': courseParse.at(-1),
+              'sectionyear': "2022",
           };
 
         // var index = enrolled_courses.indexOf(item);
@@ -75,8 +75,8 @@ function addButton(item, sections){
                      'name': courseParse[0],
                      'number': courseParse[1],
                  },
-                 'section_number': sections.options[sections.options.selectedIndex].value,
-                 'section_year': "2022",
+                 'sectionnumber': sections.options[sections.options.selectedIndex].value,
+                 'sectionyear': "2022",
              };
 
         console.log(courseDict);
@@ -142,20 +142,16 @@ function dropCourse(courseDict){
   })
   .then((response) => response.json())
   .then((json) => {
-      console.log(json);
-      enrolled_courses = [];
-      json.forEach((item) => {
-      let course = '';
-      course = item.cname + " " + item.cnumber+ "  Section Num: " + item.sectionID + "  ";
-      enrolled_courses.push(course);
+      populateMyCurrentCourses();
     }
 
-)}).then(() => displayEnrolled())
+)
   .catch(error => console.log(error));
 }
 
 
 function populateMyCurrentCourses(){
+  enrolled_courses = [];
   fetch("http://localhost:8080/api/v1/registration/USER/" + sessionStorage.token + "/YEAR/2022",
   {
 //    method: "GET",
