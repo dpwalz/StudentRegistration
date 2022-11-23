@@ -39,13 +39,25 @@ function dropButton(item){
     btn.onclick = function(){
         result = confirm("Are you sure you want to remove the course?")
         if (result == true){
-        //Put in fetch
-        var index = enrolled_courses.indexOf(item);
-        if (index > -1) {
-        enrolled_courses.splice(index, 1);
-        displayEnrolled()
+          let courseParse = item.split(" ");
+          courseParse = courseParse.filter(entry => entry.trim() != '');
+          console.log(courseParse);
+          let courseDict = {
+              "course" : {
+                  'name': courseParse[0],
+                  'number': courseParse[1],
+              },
+              'section_number': courseParse.at(-1),
+              'section_year': "2022",
+          };
+
+        // var index = enrolled_courses.indexOf(item);
+        // if (index > -1) {
+        // enrolled_courses.splice(index, 1);
+        console.log(courseDict)
+        dropCourse(courseDict);
+        // displayEnrolled()
       }
-    }
     }
     return btn;
 }
@@ -58,14 +70,13 @@ function addButton(item, sections){
         result = confirm("Are you sure you want to add the course?")
         if (result == true){
              let courseParse = item.split(" ");
-             console.log(courseParse)
              let courseDict = {
                  "course" : {
                      'name': courseParse[0],
                      'number': courseParse[1],
                  },
                  'section_number': sections.options[sections.options.selectedIndex].value,
-                 'section_year': "2022"
+                 'section_year': "2022",
              };
 
         console.log(courseDict);
@@ -78,6 +89,7 @@ function addButton(item, sections){
 }
 
 function searchAll(){
+        document.getElementById("searchname").value = "";
         document.getElementById("courseList").innerHTML = "";
         courses_view.forEach((item) => {
         let li = document.createElement("li");
@@ -104,9 +116,29 @@ function searchSome(){
 }
 
 function addCourse(courseDict){
-  fetch("http://localhost:8080/api/v1/registration/STUDENT/" + localStorage.token,
+  fetch("http://localhost:8080/api/v1/registration/STUDENT/" + sessionStorage.token,
   {
     method: "POST",
+    headers:{"Content-Type":"application/json"},
+    body: JSON.stringify(courseDict),
+  })
+  .then((response) => response.json())
+  .then((json) => {
+
+  json.forEach((item) => {
+      let course = '';
+      course = item.cname + " " + item.cnumber + item.csection;
+      enrolled_courses.push(course);
+    }
+
+)})
+  .catch(error => console.log(error));
+}
+
+function dropCourse(courseDict){
+  fetch("http://localhost:8080/api/v1/registration/STUDENT/" + sessionStorage.token,
+  {
+    method: "DELETE",
     headers:{"Content-Type":"application/json"},
     body: JSON.stringify(courseDict),
   })
