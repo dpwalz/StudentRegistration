@@ -47,6 +47,13 @@ public class RegistrationController {
         return "Pass";
     }
 
+    @DeleteMapping(path = "STUDENT/{username}")
+    public String deleteRegistration(@RequestBody Section section, @PathVariable("username") String username) {
+        
+        List<Registration> registrations = registrationService.deleteRegistration(section, username);
+        return toJSON(registrations);
+    }
+
 
     private String toJSON(List<Registration> registrations) {
 

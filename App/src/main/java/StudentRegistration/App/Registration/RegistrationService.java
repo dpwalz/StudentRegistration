@@ -34,4 +34,10 @@ public class RegistrationService {
             System.out.println("Not in course");
         }
     }
+
+    public List<Registration> deleteRegistration(Section section, String username) {
+        
+        registrationRepository.deleteBySectionStudent(username, section);
+        return registrationRepository.findRegistrationByStudentAndYear(username, section.getSection_year());
+    }
 }
