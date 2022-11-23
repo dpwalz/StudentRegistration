@@ -123,13 +123,13 @@ function addCourse(courseDict){
   .then((response) => response.json())
   .then((json) => {
 
-  json.forEach((item) => {
-      let course = '';
-      course = item.cname + " " + item.cnumber + item.csection;
-      enrolled_courses.push(course);
-    }
-
-)})
+    enrolled_courses = [];
+    json.forEach((item) => {
+    let course = '';
+    course = item.cname + " " + item.cnumber+ "  Section Num: " + item.sectionID + "  ";
+    enrolled_courses.push(course);
+  })
+})
   .catch(error => console.log(error));
 }
 
@@ -142,14 +142,15 @@ function dropCourse(courseDict){
   })
   .then((response) => response.json())
   .then((json) => {
-
-  json.forEach((item) => {
+      console.log(json);
+      enrolled_courses = [];
+      json.forEach((item) => {
       let course = '';
-      course = item.cname + " " + item.cnumber + item.csection;
+      course = item.cname + " " + item.cnumber+ "  Section Num: " + item.sectionID + "  ";
       enrolled_courses.push(course);
     }
 
-)})
+)}).then(() => displayEnrolled())
   .catch(error => console.log(error));
 }
 
@@ -163,7 +164,6 @@ function populateMyCurrentCourses(){
   })
   .then((response) => response.json())
   .then((json) => {
-
   json.forEach((item) => {
       let course = '';
       course = item.cname + " " + item.cnumber+ "  Section Num: " + item.sectionID + "  ";
@@ -184,7 +184,6 @@ function populateCata(){
   .then((response) => response.json())
   .then((json) => {
     json.forEach((item) => {
-        console.log(item)
         let course = '';
         course = item.cname + " " + item.cnumber;
         courses_view.push(course);

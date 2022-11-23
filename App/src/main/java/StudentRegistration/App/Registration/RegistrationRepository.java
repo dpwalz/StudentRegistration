@@ -9,11 +9,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import StudentRegistration.App.Section.Section;
+
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+@Transactional
 @Repository
 public interface RegistrationRepository extends JpaRepository<Registration, RegistrationId> {
 
@@ -30,5 +33,9 @@ public interface RegistrationRepository extends JpaRepository<Registration, Regi
             value = "INSERT INTO REGISTRATIONS (StudentUsername, CourseName, CourseNumber, SectionNumber, SectionYear, Grade) VALUES (:user, :name, :cnum, :snum, :syear, :grade)",
             nativeQuery = true)
     void insertRegistration(@Param("user") String username, @Param("name") String name, @Param("cnum") int coursenumber, @Param("snum") int sectionnumber, @Param("syear") int year, @Param("grade") String grade);
+
+    @Modifying
+    @Query(value = "DELETE FROM Registration r WHERE r.student.username = ?1 and r.section = ?2")
+    void deleteBySectionStudent(String username, Section section);
 
 }

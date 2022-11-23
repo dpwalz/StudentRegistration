@@ -60,4 +60,10 @@ public class RegistrationService {
         registrationRepository.insertRegistration(username, section.getCourse().getName(), section.getCourse().getNumber(), section.getSectionnumber(), section.getSectionyear(), "I");
 
     }
+
+    public List<Registration> deleteRegistration(Section section, String username) {
+        
+        registrationRepository.deleteBySectionStudent(username, section);
+        return registrationRepository.findRegistrationByStudentAndYear(username, section.getSection_year());
+    }
 }
