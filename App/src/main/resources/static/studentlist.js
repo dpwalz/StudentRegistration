@@ -137,23 +137,20 @@ function dropCourse(courseDict){
   })
   .then((response) => response.json())
   .then((json) => {
-      console.log(json);
-      enrolled_courses = [];
-      json.forEach((item) => {
-      let course = '';
-      course = item.cname + " " + item.cnumber+ "  Section Num: " + item.sectionID + "  ";
-      enrolled_courses.push(course);
+      populateMyCurrentCourses();
     }
 
-)}).then(() => displayEnrolled())
+)
   .catch(error => console.log(error));
 }
 
 
 function populateMyCurrentCourses(){
+
     enrolled_courses = []
   fetch("http://localhost:8080/api/v1/registration/USER" +
       "/" + sessionStorage.token + "/YEAR/2022",
+
   {
 //    method: "GET",
 //    headers:{"Content-Type":"application/json"},
