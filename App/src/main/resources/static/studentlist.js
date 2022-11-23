@@ -83,6 +83,7 @@ function addButton(item, sections){
         addCourse(courseDict);
         };
     }
+
     return btn;
 }
 
@@ -122,13 +123,7 @@ function addCourse(courseDict){
   })
   .then((response) => response.json())
   .then((json) => {
-
-    enrolled_courses = [];
-    json.forEach((item) => {
-    let course = '';
-    course = item.cname + " " + item.cnumber+ "  Section Num: " + item.sectionID + "  ";
-    enrolled_courses.push(course);
-  })
+    populateMyCurrentCourses()
 })
   .catch(error => console.log(error));
 }
@@ -151,8 +146,11 @@ function dropCourse(courseDict){
 
 
 function populateMyCurrentCourses(){
-  enrolled_courses = [];
-  fetch("http://localhost:8080/api/v1/registration/USER/" + sessionStorage.token + "/YEAR/2022",
+
+    enrolled_courses = []
+  fetch("http://localhost:8080/api/v1/registration/USER" +
+      "/" + sessionStorage.token + "/YEAR/2022",
+
   {
 //    method: "GET",
 //    headers:{"Content-Type":"application/json"},

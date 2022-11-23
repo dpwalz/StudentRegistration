@@ -64,6 +64,7 @@ public class RegistrationService {
     public void deleteRegistration(Section section, String username) {
         
         registrationRepository.deleteBySectionStudent(username, section);
-        
+
+       
     }
 }

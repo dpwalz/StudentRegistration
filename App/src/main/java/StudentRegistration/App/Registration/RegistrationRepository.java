@@ -37,4 +37,6 @@ public interface RegistrationRepository extends JpaRepository<Registration, Regi
     @Query(value = "DELETE FROM Registration r WHERE r.student.username = ?1 and r.section = ?2")
     void deleteBySectionStudent(String username, Section section);
 
+
+
 }
