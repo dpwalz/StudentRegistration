@@ -64,6 +64,7 @@ public class RegistrationService {
     public List<Registration> deleteRegistration(Section section, String username) {
         
         registrationRepository.deleteBySectionStudent(username, section);
-        return registrationRepository.findRegistrationByStudentAndYear(username, section.getSection_year());
+        return registrationRepository.findRegistrationByStudent_UsernameAndSection_Sectionyear(username, section.getSectionyear());
+//        return registrationRepository.findRegistrationByStudentAndSection_Sectionyear(username, section.getSectionyear());
     }
 }

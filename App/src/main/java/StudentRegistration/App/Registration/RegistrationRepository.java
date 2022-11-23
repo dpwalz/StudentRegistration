@@ -28,7 +28,6 @@ public interface RegistrationRepository extends JpaRepository<Registration, Regi
     List<Registration> findRegistrationByStudentAndSection_Course(Student student, Course course);
 
     @Modifying
-    @Transactional
     @Query(
             value = "INSERT INTO REGISTRATIONS (StudentUsername, CourseName, CourseNumber, SectionNumber, SectionYear, Grade) VALUES (:user, :name, :cnum, :snum, :syear, :grade)",
             nativeQuery = true)
@@ -37,5 +36,7 @@ public interface RegistrationRepository extends JpaRepository<Registration, Regi
     @Modifying
     @Query(value = "DELETE FROM Registration r WHERE r.student.username = ?1 and r.section = ?2")
     void deleteBySectionStudent(String username, Section section);
+
+
 
 }
