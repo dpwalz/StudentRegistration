@@ -123,7 +123,11 @@ function addCourse(courseDict){
   })
   .then((response) => response.json())
   .then((json) => {
-    populateMyCurrentCourses()
+      if (json.status == "OK"){
+          populateMyCurrentCourses()
+      } else {
+          alert(json.message)
+      }
 })
   .catch(error => console.log(error));
 }

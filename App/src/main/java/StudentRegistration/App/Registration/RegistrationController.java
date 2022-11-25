@@ -51,6 +51,7 @@ public class RegistrationController {
             jo.put("message", e.getMessage());
         }
 
+        System.out.println(jo.toString());
         return jo.toString();
     }
 
