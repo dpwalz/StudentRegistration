@@ -8,22 +8,26 @@ body {
 
 div.form {
 
-    margin-top:200px;
+    margin-top:5%;
     margin-left:auto;
     margin-right:auto;
 
       padding: 10px;
-      width: 40%;
+      width: 400px;
+      height: 500px;
       background: rgba(255, 255, 255, 0.7);
       opacity: 50;
-      border-radius: 20px;
-      border:10px solid Green;
+      border-radius: 10px;
+      border:5px Grey;
       border-style: outset;
 }
 
 #loginbutton {
   width: 100px;
   font-size:28px;
+  border-style: ridge;
+
+  margin: 10px;
     }
 
 #username {
@@ -31,6 +35,7 @@ div.form {
   width: 200px;
   text-align: center;
   font-size: 18px;
+  margin: 5px;
     }
 
 #password {
@@ -48,23 +53,21 @@ div.form {
 
 #logintext {
     text-align: center;
-
 }
 
 #login-form {
-    font-size: 36px;
+    text-align: center;
+  height: 400px;
+  width: 200px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 10px;
+  width:100%;
     color: black;
     font-weight: 900
     }
 
-p {
-  width: 100%;
-  text-align: center;
+p.mask {
+
   color: black;
-  font-size: 70px
+  font-size: 50px
 
 }
