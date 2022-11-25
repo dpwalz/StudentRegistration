@@ -47,6 +47,7 @@ div.form {
 
 .row {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     
   }
@@ -83,5 +84,6 @@ li {
     width: 100px;
     font-size:28px;
 }
+
 
 
