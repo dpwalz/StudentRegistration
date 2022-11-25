@@ -16,11 +16,12 @@ CREATE TABLE STUDENTS (
 
 INSERT INTO STUDENTS (username, UPassword, FName, LName, StudentID, Major)
 VALUES
-("garnet.crookes", "1234", "Garnet", "Crookes", "00000001", "ENGINEERING"),
-("derek.walz", "pass", "Derek", "Walz", "00000002", "ENGINEERING"),
-("ben.kaminski", "8080", "Ben", "Kaminski", "00000003", "ENGINEERING");
+("garnet.crookes", "1234", "Garnet", "Crookes", "10000000", "ENGINEERING"),
+("derek.walz", "pass", "Derek", "Walz", "10000001", "ENGINEERING"),
+("ben.kaminski", "8080", "Ben", "Kaminski", "10000002", "ENGINEERING");
 
-SELECT * FROM STUDENTS;
+SELECT * FROM STUDENTS
+ORDER BY STUDENTS.StudentID;
 
 
 
@@ -66,9 +67,6 @@ VALUES
 
 SELECT * FROM COURSES;
 
-
-
-
 -- Create and populate pre-requisite table --
 
 DROP TABLE IF EXISTS PREREQUISITES;
@@ -87,6 +85,18 @@ ALTER TABLE PREREQUISITES
 ALTER TABLE PREREQUISITES
 	ADD CONSTRAINT foreign key (PreRequisiteName, PreRequisiteNumber) references COURSES (CName, CNumber);
     
+INSERT INTO PREREQUISITES (CourseName, CourseNumber, PreRequisiteName, PreRequisiteNumber) 
+VALUES 
+("ENSF", 610, "ENSF", 607),
+("ENSF", 610, "ENSF", 608),
+("ENSF", 610, "ENSF", 611),
+("ENSF", 610, "ENSF", 614),
+("ENSF", 609, "ENSF", 607),
+("ENSF", 609, "ENSF", 608),
+("ENSF", 609, "ENSF", 611),
+("ENSF", 609, "ENSF", 614);
+
+SELECT * FROM PREREQUISITES;
 
 DROP TABLE IF EXISTS SECTIONS;
 CREATE TABLE SECTIONS (

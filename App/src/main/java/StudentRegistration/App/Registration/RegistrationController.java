@@ -42,7 +42,7 @@ public class RegistrationController {
         try {
             registrationService.addRegistration(section, username);
             jo.put("status", HttpStatus.OK);
-            jo.put("message", "Registration Successful");
+            jo.put("message", registrationService.registeredStudents(section));
         } catch (NoSuchElementException e) {
             jo.put("status",  HttpStatus.NOT_FOUND.ordinal());
             jo.put("message", "Invalid Username Provided");
@@ -51,7 +51,6 @@ public class RegistrationController {
             jo.put("message", e.getMessage());
         }
 
-        System.out.println(jo.toString());
         return jo.toString();
     }
 

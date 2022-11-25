@@ -20,8 +20,8 @@ public interface RegistrationRepository extends JpaRepository<Registration, Regi
 
     List<Registration> findRegistrationByStudent_UsernameAndSection_Sectionyear(String username, int section_year);
     List<Registration> findRegistrationByStudentAndSection_Course(Student student, Course course);
-
     List<Registration> findRegistrationByStudent(Student student);
+    int countRegistrationsBySection(Section s);
 
     @Modifying
     @Query(

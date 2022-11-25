@@ -124,6 +124,11 @@ function addCourse(courseDict){
   .then((response) => response.json())
   .then((json) => {
       if (json.status == "OK"){
+          let enrolledStudents = json.message
+          if (parseInt(enrolledStudents) < 8) {
+              alert("There are " + enrolledStudents + "students enrolled in this section.\n" +
+                  "If 8 students do not enroll this section will be canceled")
+          }
           populateMyCurrentCourses()
       } else {
           alert(json.message)
