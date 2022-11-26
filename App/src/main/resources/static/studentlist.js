@@ -1,15 +1,8 @@
-//let enrolled_courses = ["ENSF 592 01", "ENSF 593 02", "ENSF 594 03", "ENSF 607 01"];
-// let courses_view = ["ENSF 608 01", "ENSF 611 02", "ENSF 614 03", "ENSF 645 01"];
-
-
-
 let courses_view = [];
 let enrolled_courses = [];
 let search_view = [];
 let sections_dict = {};
 
-//if (sessionStorage.token != ""){
-//    window.location.href = "http://localhost:8080/"};
 //currently enrolled
 let list = document.getElementById("myList");
 //course searcher
@@ -17,7 +10,7 @@ let courseList = document.getElementById("courseList");
 
 populateMyCurrentCourses();
 // console.log(enrolled_courses);
-// displayEnrolled();
+
 populateCata();
 
 // console.log(courses_view);
