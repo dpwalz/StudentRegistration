@@ -15,7 +15,6 @@ import java.util.List;
 @RequestMapping(path = "api/v1/user")
 public class UserController {
 
-
     private final UserService userService;
 
     @Autowired
@@ -32,6 +31,7 @@ public class UserController {
     @PutMapping
     public String postUser(@RequestBody Login credentials) {
 
+        System.out.println("Here");
         JSONObject jo = new JSONObject();
 
         User response;
@@ -61,7 +61,4 @@ public class UserController {
         return s;
 
     }
-
-
-
 }

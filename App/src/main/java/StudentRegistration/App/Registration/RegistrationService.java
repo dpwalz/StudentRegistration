@@ -81,6 +81,10 @@ public class RegistrationService {
 
     }
 
+    public int registeredStudents(Section section) {
+        return registrationRepository.countRegistrationsBySection(section);
+    }
+
     public void deleteRegistration(Section section, String username) {
         
         registrationRepository.deleteBySectionStudent(username, section);
