@@ -252,7 +252,7 @@ function populateCata(){
         course = item.cname + " " + item.cnumber;
         courses_view.push(course);
         sections_dict[course] = item.sections;
-        prereqs_dict[course] = item.prereqs;
+        prereqs_dict[course] = item.prerequisites;
   })})
   .catch((error) => console.log("hello"));
 }
