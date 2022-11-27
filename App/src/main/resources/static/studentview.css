@@ -74,7 +74,8 @@ div.form {
 li {
     list-style: none;
     display: flex;
-    justify-content:space-evenly;
+    justify-content:space-between;
+    margin-top: 5px;
     /* text-align: justify; */
 }
 
@@ -138,4 +139,8 @@ li {
     display: none;
     overflow: hidden;
   }
+
+.prereq {
+    font-size: smaller;
+}
 

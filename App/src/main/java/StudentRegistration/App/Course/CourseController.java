@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @RestController
 @RequestMapping(path = "api/v1/course")
 public class CourseController {
@@ -46,10 +47,12 @@ public class CourseController {
         JSONArray ja = new JSONArray();
 
         for (Course c : courses) {
+
             jo = new JSONObject();
             jo.put("cname", c.getName());
             jo.put("cnumber", c.getNumber());
             jo.put("sections", c.getSectionID());
+
 
             List<String> pre = new ArrayList<>();
 
@@ -58,6 +61,7 @@ public class CourseController {
             }
 
             jo.put("prerequisites", pre);
+
             ja.put(jo);
         }
 
