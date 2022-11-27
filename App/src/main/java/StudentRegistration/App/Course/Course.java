@@ -67,6 +67,17 @@ public class Course implements Serializable {
         this.prerequisites = prerequisites;
     }
 
+    public List<String> getPrerequisitesID() {
+        List<String> prereqs = new ArrayList<>();
+
+        for (Course c: getPrerequisites()) {
+            prereqs.add(c.getName() + " " + c.getNumber());
+        }
+        
+        Collections.sort(prereqs);
+        return prereqs;
+    }
+
     public List<Integer> getSectionID() {
         List<Integer> sections = new ArrayList<>();
 
