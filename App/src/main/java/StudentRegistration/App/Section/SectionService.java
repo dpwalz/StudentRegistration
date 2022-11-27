@@ -2,6 +2,9 @@ package StudentRegistration.App.Section;
 
 import StudentRegistration.App.Course.Course;
 import StudentRegistration.App.Course.CourseService;
+import StudentRegistration.App.Registration.RegistrationService;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +23,8 @@ public class SectionService {
         this.courseService = courseService;
     }
 
+
+
     public Set<Course> getPrerequisitesBySection(Section section) {
         Course c = section.getCourse();
         return courseService.getPrerequisitesByCourse(c);
@@ -27,5 +32,11 @@ public class SectionService {
 
     public Section getSection(Section section) {
         return sectionRepository.findSectionByCourseAndSectionnumberAndSectionyear(section.getCourse(), section.getSectionnumber(), section.getSectionyear());
+    }
+
+    public List<Section> getSectionsByCourse(String prog, int id) {
+
+        return sectionRepository.findSectionByCourse_NameAndCourse_Number(prog, id);
+
     }
 }

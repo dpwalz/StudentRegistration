@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -32,7 +33,7 @@ public class CourseController {
 
     }
 
-    @GetMapping(value = "/{prog}/{id}")
+    @GetMapping(value = "/{prog}/NUMBER/{id}")
     public String searchCourse(@PathVariable("prog") String prog, @PathVariable("id") int id) {
 
         List<Course> courses = courseService.getCourses(prog, id);
@@ -49,10 +50,17 @@ public class CourseController {
             jo.put("cname", c.getName());
             jo.put("cnumber", c.getNumber());
             jo.put("sections", c.getSectionID());
+
+            List<String> pre = new ArrayList<>();
+
+            for (Course course: c.getPrerequisites()) {
+                pre.add(course.getName() + " " + course.getNumber());
+            }
+
+            jo.put("prerequisites", pre);
             ja.put(jo);
         }
 
         return ja.toString();
     }
-
 }

@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.*;
 
 import StudentRegistration.App.Section.Section;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity(name = "courses")
 @IdClass(CourseID.class)
@@ -20,6 +21,7 @@ public class Course implements Serializable {
 
     @OneToMany(targetEntity = Section.class, mappedBy = "course")
     private Set<Section> sections = new HashSet<>();
+
 
     @ManyToMany(targetEntity = Course.class, cascade = CascadeType.ALL)
     @JoinTable(
