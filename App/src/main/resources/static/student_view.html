@@ -18,40 +18,31 @@
 <div class="row">
     <div class="col">
         <label class="labels" for="mylist">Current Enrolled Courses</label>
-        <div class="scrollable">
-            <ul name ="mylist" id="myList"></ul>
-        </div>
+        <div  name ="mylist" id="myList"></div>
     </div>
-<br>
-<br>
-<br>
-<br>
-<div>
-    <div class="col">
-        <label class="labels" for="searchall">See All Courses</label><br>
-        <button onclick="searchAll()" type="button" id="searchall">Search All</button><br><br><br>
 
+    <div class="col">
 
         <form>
             <label class="labels" for="searchname">Search For A Course</label><br>
-            <input class="searchable" type="text" id="searchname" name="searchname" placeholder="Name ID (ENSF 607)" onkeyup="searchClasses(this)" >
+
+                <label class="labels" for="searchall"></label>
+                <input class="searchable" type="text" id="searchname" name="searchname" placeholder="Name ID (ENSF 607)" onkeyup="searchClasses(this)" >
+            <button onclick="searchAll()" type="button" id="searchall">Search All</button>
+
             <!-- <input type="text" id="searchcode" name="searchcode" placeholder="coursecode (607)"> -->
             <!-- <button type="button" id="searchone">Search</button> -->
         </form>
-            <br>
-            <label class="labels" for="courselist">Results</label>
-            <ul class="scrollable" name ="courselist" id="courseList"></ul>
+        <div name ="courselist" id="courseList"></div>
+
     </div>
 
-<br>
-<br>
-</div>
+    </div>
+
+
 <!-- required minlength="4" maxlength="8" size="10" -->
-</div>
-    <br>
-    <br>
-    <br>
-    <br>
+
+
     <div class="buttondiv">
     <Button  id="logout" onclick="logOut()">Log Out</Button>
     <script src="studentlist.js"></script>
