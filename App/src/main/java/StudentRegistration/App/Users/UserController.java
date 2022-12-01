@@ -31,7 +31,6 @@ public class UserController {
     @PutMapping
     public String postUser(@RequestBody Login credentials) {
 
-        System.out.println("Here");
         JSONObject jo = new JSONObject();
 
         User response;

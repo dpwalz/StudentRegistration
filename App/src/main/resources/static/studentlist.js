@@ -4,6 +4,7 @@ let enrolled_courses = [];
 let enrolled_sections_dict = {};
 let search_view = [];
 let sections_dict = {};
+let prereqs_dict = {};
 
 // currently enrolled
 // this html tag displays the currently enrolled courses
@@ -51,7 +52,7 @@ courses_view.forEach((course) => {
 // display those courses. 
 // Event listener for the Search bar input tag.  
 function searchClasses(searchBar){
-  let substring = searchBar.value;
+  let substring = searchBar.value.toUpperCase();
   search_view = [];
   courses_view.find(element => {
     if (element.includes(substring)) {
@@ -147,6 +148,7 @@ function makeAccordion(course, sect_dict, button_type){
     section_element.appendChild(btn);
     panel.appendChild(section_element);
   })
+  if (button_type === 'add') panel.appendChild(makePrereqs(course));
   acc.classList.add("accordion");
   acc.innerText = `${course}`
   acc.onclick = (() => {
@@ -162,6 +164,16 @@ function makeAccordion(course, sect_dict, button_type){
   acc_and_panel.push(panel);
   
   return acc_and_panel;
+}
+
+// makePrereqs creates and returns a HTML li element
+// with a formatted string containing the courses prereqs. 
+function makePrereqs(course){
+  let prereqs = prereqs_dict[course];
+  let pr = document.createElement("li");
+  pr.classList.add("prereq");
+  (prereqs.length === 0) ? pr.innerText = `Prerequisites: N/A` : pr.innerText = `Prerequisites: ${prereqs.join(', ')}`;
+  return pr;
 }
 
 // *****FUNCTIONS FOR API REQUESTS:*****
@@ -240,6 +252,7 @@ function populateCata(){
         course = item.cname + " " + item.cnumber;
         courses_view.push(course);
         sections_dict[course] = item.sections;
+        prereqs_dict[course] = item.prerequisites;
   })})
   .catch((error) => console.log("hello"));
 }
