@@ -3,6 +3,7 @@ package StudentRegistration.App.Section;
 import StudentRegistration.App.Course.Course;
 import StudentRegistration.App.Registration.Registration;
 import StudentRegistration.App.Teacher.Teacher;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -22,8 +23,11 @@ public class Section implements Serializable {
     @Column(name = "sectionyear")
     private int sectionyear;
 
+
+    @JsonIgnore
     @OneToMany(targetEntity = Registration.class, cascade = CascadeType.ALL, mappedBy = "section")
     private Set<Registration> registeredStudents = new HashSet<>();
+
 
     @ManyToOne(targetEntity = Teacher.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "teacher")

@@ -4,10 +4,7 @@ import StudentRegistration.App.Section.Section;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +37,23 @@ public class CourseController {
         return toJSON(courses);
     }
 
+
+    @PostMapping
+    public void AddCourse(@RequestBody Course course) {
+        courseService.addNewCourse(course);
+    }
+
+    @PatchMapping(value = "/OLDCOURES/{oldCourse}/OLDNUMBER/{oldNumber}/NEWCOURSE/{course}/NEWNUMBER/{number}")
+    public void changeCourseName(@PathVariable("oldCourse") String oldCourse, @PathVariable("oldNumber") int oldNumber, @PathVariable("course") String course, @PathVariable("number") int number) {
+        System.out.println("HERE");
+        courseService.changeEntry(oldCourse, oldNumber, course, number);
+    }
+
+    @DeleteMapping(value = "/{prog}/NUMBER/{id}")
+    public void DeleteCourse(@PathVariable("prog") String prog, @PathVariable("id") int id) {
+        courseService.deleteCourse(prog, id);
+    }
+
     private String toJSON(List<Course> courses) {
 
         JSONObject jo;
@@ -63,4 +77,5 @@ public class CourseController {
 
         return ja.toString();
     }
+
 }

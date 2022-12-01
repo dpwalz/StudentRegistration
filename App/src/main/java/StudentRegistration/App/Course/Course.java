@@ -19,9 +19,17 @@ public class Course implements Serializable {
     @Column(name = "cnumber")
     private int number;
 
-    @OneToMany(targetEntity = Section.class, mappedBy = "course")
+    @JsonIgnore
+    @OneToMany(targetEntity = Section.class, mappedBy = "course", cascade = CascadeType.ALL)
     private Set<Section> sections = new HashSet<>();
 
+    public Course() {
+    }
+
+    public Course(String name, int number) {
+        this.name = name;
+        this.number = number;
+    }
 
     @ManyToMany(targetEntity = Course.class, cascade = CascadeType.ALL)
     @JoinTable(

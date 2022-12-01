@@ -24,6 +24,10 @@ public class SectionController {
         this.registrationService = registrationService;
     }
 
+    @GetMapping
+    public List<Section> getAllSections() {
+        return sectionService.getAllSections();
+    }
     @GetMapping(value = "/COURSE/{prog}/NUMBER/{id}")
     public String searchCourse(@PathVariable("prog") String prog, @PathVariable("id") int id) {
         List<Section>  sections = sectionService.getSectionsByCourse(prog, id);

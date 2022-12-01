@@ -23,8 +23,6 @@ public class SectionService {
         this.courseService = courseService;
     }
 
-
-
     public Set<Course> getPrerequisitesBySection(Section section) {
         Course c = section.getCourse();
         return courseService.getPrerequisitesByCourse(c);
@@ -38,5 +36,9 @@ public class SectionService {
 
         return sectionRepository.findSectionByCourse_NameAndCourse_Number(prog, id);
 
+    }
+
+    public List<Section> getAllSections() {
+        return (List<Section>) sectionRepository.findAll();
     }
 }

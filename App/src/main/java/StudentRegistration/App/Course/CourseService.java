@@ -1,6 +1,7 @@
 package StudentRegistration.App.Course;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,5 +32,24 @@ public class CourseService {
 
         Course course = courses.get(0);
         return course.getPrerequisites();
+    }
+
+    public void createCourse(String dept, int number) {
+        courseRepository.save(new Course(dept, number));
+    }
+
+    public void addNewCourse(Course course) {
+        System.out.println("Here");
+        courseRepository.save(course);
+    }
+
+    public void deleteCourse(String prog, int id) {
+        courseRepository.deleteCourseByNameAndNumber(prog, id);
+    }
+
+    public void changeEntry(String oldCourse, int oldNumber, String course, int number) {
+
+        courseRepository.updatePhone(course, number, oldCourse, oldNumber);
+
     }
 }
