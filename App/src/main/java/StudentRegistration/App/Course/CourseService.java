@@ -39,8 +39,7 @@ public class CourseService {
     }
 
     public void addNewCourse(Course course) {
-        System.out.println("Here");
-        courseRepository.save(course);
+        courseRepository.saveAndFlush(course);
     }
 
     public void deleteCourse(String prog, int id) {
@@ -49,7 +48,7 @@ public class CourseService {
 
     public void changeEntry(String oldCourse, int oldNumber, String course, int number) {
 
-        courseRepository.updatePhone(course, number, oldCourse, oldNumber);
+        courseRepository.updateCourse(course, number, oldCourse, oldNumber);
 
     }
 }

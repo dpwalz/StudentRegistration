@@ -17,6 +17,11 @@ public class CourseID implements Serializable {
         this.number = number;
     }
 
+    public CourseID(Course c) {
+        this.name = c.getName();
+        this.number = c.getNumber();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

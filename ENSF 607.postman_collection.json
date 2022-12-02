@@ -1,0 +1,527 @@
+{
+	"info": {
+		"_postman_id": "eb9ac393-09ee-453a-b39d-4033cdb75789",
+		"name": "ENSF 607",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24614001"
+	},
+	"item": [
+		{
+			"name": "Course",
+			"item": [
+				{
+					"name": "Course Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/course",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"course"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Course Get Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/course/SENG/NUMBER/637",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"course",
+								"SENG",
+								"NUMBER",
+								"637"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Course Get Invalid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/course/404/NUMBER/404",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"course",
+								"404",
+								"NUMBER",
+								"404"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Course Patch",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/course/OLDCOURES/ENSF/OLDNUMBER/607/NEWCOURSE/ENSF/NEWNUMBER/670",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"course",
+								"OLDCOURES",
+								"ENSF",
+								"OLDNUMBER",
+								"607",
+								"NEWCOURSE",
+								"ENSF",
+								"NEWNUMBER",
+								"670"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Course Patch Invalid",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/course/OLDCOURES/ENSF/OLDNUMBER/404/NEWCOURSE/ENSF/NEWNUMBER/670",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"course",
+								"OLDCOURES",
+								"ENSF",
+								"OLDNUMBER",
+								"404",
+								"NEWCOURSE",
+								"ENSF",
+								"NEWNUMBER",
+								"670"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Course Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\": \"ENSF\", \"number\": 699, \"prerequisites\":[{\"name\": \"ENSF\", \"number\": 607}, {\"name\": \"ENSF\", \"number\": 608}]}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/course",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"course"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Course Post Invalid",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\": \"ENSF\", \"number\": 608, \"prerequisites\":[]}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/course",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"course"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Course Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/course/ENSF/NUMBER/612",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"course",
+								"ENSF",
+								"NUMBER",
+								"612"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Course Delete Invalid",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/course/ENSF/NUMBER/404",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"course",
+								"ENSF",
+								"NUMBER",
+								"404"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Section",
+			"item": [
+				{
+					"name": "Section Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/section",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"section"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Section Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"sectionnumber\": 1, \"sectionyear\": 2022, \r\n\"course\": {\r\n        \"name\": \"ENSF\",\r\n        \"number\": 608\r\n    },\r\n\r\n\"teacher\": {\r\n        \"username\": \"jakaur\",\r\n        \"password\": \"1234\",\r\n        \"firstName\": \"Jaspreet\",\r\n        \"lastName\": \"Kaur\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/section",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"section"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Section Post Invalid",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"sectionnumber\": 4, \"sectionyear\": 2022, \r\n\"course\": {\r\n        \"name\": \"ENEL\",\r\n        \"number\": 404,\r\n        \"prerequisites\": [],\r\n        \"prerequisitesID\": [],\r\n        \"sectionID\": [1]\r\n    },\r\n\r\n\"teacher\": {\r\n        \"username\": \"jakaur\",\r\n        \"password\": \"1234\",\r\n        \"firstName\": \"Jaspreet\",\r\n        \"lastName\": \"Kaur\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/section",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"section"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Section Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/section/ENSF/NUMBER/608/Section/1/YEAR/2022",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"section",
+								"ENSF",
+								"NUMBER",
+								"608",
+								"Section",
+								"1",
+								"YEAR",
+								"2022"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Section Delete Invalid",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/section/ENEL/NUMBER/645/Section/404/YEAR/2022",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"section",
+								"ENEL",
+								"NUMBER",
+								"645",
+								"Section",
+								"404",
+								"YEAR",
+								"2022"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Section Patch",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/section/COURSE/ENEL/NUMBER/645/OLDSECTION/1/OLDYEAR/2022/SECTION/700/YEAR/2022",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"section",
+								"COURSE",
+								"ENEL",
+								"NUMBER",
+								"645",
+								"OLDSECTION",
+								"1",
+								"OLDYEAR",
+								"2022",
+								"SECTION",
+								"700",
+								"YEAR",
+								"2022"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Section Patch Invalid",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/section/COURSE/ENEL/NUMBER/645/OLDSECTION/20/OLDYEAR/2022/SECTION/700/YEAR/2022",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"section",
+								"COURSE",
+								"ENEL",
+								"NUMBER",
+								"645",
+								"OLDSECTION",
+								"20",
+								"OLDYEAR",
+								"2022",
+								"SECTION",
+								"700",
+								"YEAR",
+								"2022"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Registration",
+			"item": [
+				{
+					"name": "Registration Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"course\" : {\"name\": \"SENG\", \"number\": 637}, \"sectionnumber\": 1, \"sectionyear\": \"2022\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/registration/STUDENT/garnet.crookes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"registration",
+								"STUDENT",
+								"garnet.crookes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registration Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"course\" : {\"name\": \"ENEL\", \"number\": 645},\"sectionnumber\": 1, \"sectionyear\": \"2022\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/registration/STUDENT/garnet.crookes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"registration",
+								"STUDENT",
+								"garnet.crookes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

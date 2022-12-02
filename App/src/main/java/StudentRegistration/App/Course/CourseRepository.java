@@ -24,6 +24,6 @@ public interface CourseRepository extends JpaRepository<Course, CourseID> {
 
     @Modifying
     @Query("update courses c set c.name = :name, c.number = :number  where c.number = :oldnumber and c.name = :oldname ")
-    void updatePhone(@Param(value = "name") String name, @Param(value = "number") int number, @Param(value = "oldname") String oldname, @Param(value = "oldnumber") int oldnumber);
+    void updateCourse(@Param(value = "name") String name, @Param(value = "number") int number, @Param(value = "oldname") String oldname, @Param(value = "oldnumber") int oldnumber);
 
 }

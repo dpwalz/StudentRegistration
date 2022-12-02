@@ -3,9 +3,11 @@ package StudentRegistration.App.Section;
 import StudentRegistration.App.Course.Course;
 import StudentRegistration.App.Course.CourseService;
 import StudentRegistration.App.Registration.RegistrationService;
+import StudentRegistration.App.Teacher.Teacher;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,5 +42,31 @@ public class SectionService {
 
     public List<Section> getAllSections() {
         return (List<Section>) sectionRepository.findAll();
+    }
+
+    public void addNewSection(Section section) {
+        String cname = section.getCourse().getName();
+        int cnum = section.getCourse().getNumber();
+
+        List<Section> existingSections = sectionRepository.findSectionByCourse_NameAndCourse_Number(cname, cnum);
+
+        if (existingSections.size() == 0)
+            return;
+
+        for (Section s : existingSections) {
+            if (s.getSectionnumber() == section.getSectionnumber() && s.getSectionyear() == section.getSectionyear()) {
+                return;
+            }
+        }
+
+        sectionRepository.insertSection(cname, cnum, section.getSectionnumber(), section.getSectionyear(), section.getTeacher());
+    }
+
+    public void deleteSection(String prog, int id, int sectionid, int year) {
+        sectionRepository.deleteSectionByCourse_NameAndCourse_NumberAndSectionnumberAndSectionyear(prog, id, sectionid, year);
+    }
+
+    public void changeEntry(String course, int number, int oldSection, int oldYear, int section, int year) {
+        sectionRepository.updateSection(course, number, oldSection, oldYear, section, year);
     }
 }

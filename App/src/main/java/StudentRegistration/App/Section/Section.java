@@ -28,13 +28,12 @@ public class Section implements Serializable {
     @OneToMany(targetEntity = Registration.class, cascade = CascadeType.ALL, mappedBy = "section")
     private Set<Registration> registeredStudents = new HashSet<>();
 
-
-    @ManyToOne(targetEntity = Teacher.class, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = Teacher.class, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "teacher")
     private Teacher teacher;
 
     @Id
-    @ManyToOne(targetEntity = Course.class)
+    @ManyToOne(targetEntity = Course.class, cascade = CascadeType.REFRESH)
     @JoinColumns ({
             @JoinColumn(name = "coursename", referencedColumnName = "cname"),
             @JoinColumn(name = "coursenumber", referencedColumnName = "cnumber")

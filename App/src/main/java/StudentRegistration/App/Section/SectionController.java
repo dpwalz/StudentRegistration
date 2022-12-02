@@ -1,13 +1,12 @@
 package StudentRegistration.App.Section;
 
+import StudentRegistration.App.Course.Course;
+import StudentRegistration.App.Course.CourseService;
 import StudentRegistration.App.Registration.RegistrationService;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,11 +16,13 @@ public class SectionController {
 
     private final SectionService sectionService;
     private final RegistrationService registrationService;
+    private final CourseService courseService;
 
     @Autowired
-    public SectionController(SectionService sectionService, RegistrationService registrationService) {
+    public SectionController(SectionService sectionService, RegistrationService registrationService, CourseService courseService) {
         this.sectionService = sectionService;
         this.registrationService = registrationService;
+        this.courseService = courseService;
     }
 
     @GetMapping
@@ -46,6 +47,21 @@ public class SectionController {
 
         return ja.toString();
 
+    }
+
+    @PostMapping
+    public void AddSection(@RequestBody Section section) {
+        sectionService.addNewSection(section);
+    }
+
+    @PatchMapping(value = "/COURSE/{course}/NUMBER/{number}/OLDSECTION/{oldSection}/OLDYEAR/{oldYear}/SECTION/{section}/YEAR/{year}")
+    public void changeSectionName(@PathVariable("course") String course, @PathVariable("number") int number, @PathVariable("oldSection") int oldSection, @PathVariable("oldYear") int oldYear, @PathVariable("section") int section, @PathVariable("year") int year) {
+        sectionService.changeEntry(course, number, oldSection, oldYear, section, year);
+    }
+
+    @DeleteMapping(value = "/{prog}/NUMBER/{id}/Section/{sectionid}/YEAR/{year}")
+    public void DeleteSection(@PathVariable("prog") String prog, @PathVariable("id") int id, @PathVariable("sectionid") int sectionid, @PathVariable("year") int year) {
+        sectionService.deleteSection(prog, id, sectionid, year);
     }
 
 

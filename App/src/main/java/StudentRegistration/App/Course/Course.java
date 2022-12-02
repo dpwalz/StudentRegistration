@@ -31,6 +31,7 @@ public class Course implements Serializable {
         this.number = number;
     }
 
+
     @ManyToMany(targetEntity = Course.class, cascade = CascadeType.ALL)
     @JoinTable(
             name = "PREREQUISITES",
