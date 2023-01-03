@@ -76,19 +76,20 @@ The main project code is contained in the ```App/``` Folder
 Run the following commands:
 ```
 cd App
+mvn clean install
 mvn spring-boot:run
 ``` 
 
-![Password Picture](Documentation/Screenshots/run_terminal.png)
+![Terminal Run](Documentation/Screenshots/run_terminal.png)
 
 ### Option 2 Code Editor such as Visual Studio Code
 
-Open the folder App as a java project in the code editor
+Open the folder App as a java project in any code editor
 
 Run the file Application src/main/java/StudentRegistration/App/AppApplication.java
 
 
-![Password Picture](Documentation/Screenshots/run_gui.png)
+![Code Editor Run](Documentation/Screenshots/run_gui.png)
 
 ## 4. Open Website
 
