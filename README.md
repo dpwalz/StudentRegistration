@@ -39,9 +39,9 @@ The courses are made using an accordian list. Openning a course will reveal and 
 
 ### Logout
 
-Pressing the logout button will bring the user back to the main menu
+Pressing the logout button will bring the user back to the main menu. When the same user logs back in their registered courses are still stored
 
-![Logout Process](Documentation/Screenshots/add_drop.png)
+![Logout Process](Documentation/Screenshots/logout.png)
 
 ## How to Run
 
