@@ -37,7 +37,7 @@ The main project code is contained in the ```App/``` Folder
 
 ## 3. Run Spring Boot Using Maven
 
-## Option 1 Using Git Bash or other terminal
+### Option 1 Using Git Bash or other terminal
 
 Run the following commands:
 ```
@@ -47,7 +47,7 @@ mvn spring-boot:run
 
 ![Password Picture](Documentation/Screenshots/run_terminal.png)
 
-## Option 2 Code Editor such as Visual Studio Code
+### Option 2 Code Editor such as Visual Studio Code
 
 Open the folder App as a java project in the code editor
 
