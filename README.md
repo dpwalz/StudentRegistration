@@ -13,15 +13,16 @@ System allows a user to log in and register in, drop, or search for courses. Cou
 
 ## 1. Clone Git Repository:
 	
-	Using Git Bash run the following commands:
-	```
-	git clone https://github.com/dpwalz/ENSF607-608.git
-	
-	cd ENSF607-608
-	``` 
-	The main project code is contained in the ```App/``` Folder
 
-	![Git Process](Documentation/Screenshots/git_process.png)
+Using Git Bash run the following commands:
+```
+git clone https://github.com/dpwalz/ENSF607-608.git
+
+cd ENSF607-608
+``` 
+The main project code is contained in the ```App/``` Folder
+
+![Git Process](Documentation/Screenshots/git_process.png)
 	
 
 ## 2. Create Database:
