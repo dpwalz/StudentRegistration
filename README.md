@@ -12,7 +12,7 @@
 	``` 
 	The main project code is contained in the ```App/``` Folder
 
-	![Git Process](Documentation\Screenshots\git_process.png)
+	![Git Process](Documentation/Screenshots/git_process.png)
 	
 
 1. Create Database:
