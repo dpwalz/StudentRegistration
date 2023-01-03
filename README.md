@@ -27,34 +27,34 @@ The main project code is contained in the ```App/``` Folder
 
 ## 2. Create Database:
 	
-	- Run the [CREATE_DATABASE](CREATE_DATABASE.sql) script using MySQL Workbench.
+- Run the [CREATE_DATABASE](CREATE_DATABASE.sql) script using MySQL Workbench.
 
-	- Database should be connected on port 3306
+- Database should be connected on port 3306
 
-	- Modify the spring.datasource.password file in the [application.properties](/App/src/main/resources/application.properties) file
+- Modify the spring.datasource.password file in the [application.properties](/App/src/main/resources/application.properties) file
 
-	![Password Picture](Documentation/Screenshots/database_password.png)
+![Password Picture](Documentation/Screenshots/database_password.png)
 
 ## 3. Run Spring Boot Using Maven
 
-	## Option 1 Using Git Bash or other terminal
+## Option 1 Using Git Bash or other terminal
 
-	Run the following commands:
-	```
-	cd App
-	mvn spring-boot:run
-	``` 
+Run the following commands:
+```
+cd App
+mvn spring-boot:run
+``` 
 
-	![Password Picture](Documentation/Screenshots/run_terminal.png)
+![Password Picture](Documentation/Screenshots/run_terminal.png)
 
-	## Option 2 Code Editor such as Visual Studio Code
+## Option 2 Code Editor such as Visual Studio Code
 
-	Open the folder App as a java project in the code editor
+Open the folder App as a java project in the code editor
 
-	Run the file Application src/main/java/StudentRegistration/App/AppApplication.java
+Run the file Application src/main/java/StudentRegistration/App/AppApplication.java
 
-	
-	![Password Picture](Documentation/Screenshots/run_gui.png)
+
+![Password Picture](Documentation/Screenshots/run_gui.png)
 
 ## 4. Open Website
 
