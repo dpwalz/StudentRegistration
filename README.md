@@ -86,7 +86,7 @@ mvn spring-boot:run
 
 Open the folder App as a java project in any code editor
 
-Run the file Application src/main/java/StudentRegistration/App/AppApplication.java
+Run the file AppApplication located at src/main/java/StudentRegistration/App/AppApplication.java
 
 
 ![Code Editor Run](Documentation/Screenshots/run_gui.png)
