@@ -33,7 +33,6 @@ public class RegistrationService {
     public void addRegistration(Section section, String username) {
 
         Student student = studentRepository.findStudentByUsername(username).get();
-        Section s = sectionService.getSection(section);
         Set<Course> prerequisites = sectionService.getPrerequisitesBySection(section);
 
         if (student.getEnrolled_courses().size() >= 6) {

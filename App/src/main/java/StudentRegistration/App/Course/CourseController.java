@@ -1,6 +1,5 @@
 package StudentRegistration.App.Course;
 
-import StudentRegistration.App.Section.Section;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;

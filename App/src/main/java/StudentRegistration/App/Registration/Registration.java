@@ -2,7 +2,6 @@ package StudentRegistration.App.Registration;
 
 import StudentRegistration.App.Section.Section;
 import StudentRegistration.App.Student.Student;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.io.Serializable;

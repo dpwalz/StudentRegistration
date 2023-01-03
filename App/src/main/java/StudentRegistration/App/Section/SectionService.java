@@ -2,12 +2,7 @@ package StudentRegistration.App.Section;
 
 import StudentRegistration.App.Course.Course;
 import StudentRegistration.App.Course.CourseService;
-import StudentRegistration.App.Registration.RegistrationService;
-import StudentRegistration.App.Teacher.Teacher;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

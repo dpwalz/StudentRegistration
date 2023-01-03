@@ -1,6 +1,5 @@
 package StudentRegistration.App.Section;
 
-import StudentRegistration.App.Course.Course;
 import StudentRegistration.App.Course.CourseService;
 import StudentRegistration.App.Registration.RegistrationService;
 import org.json.JSONArray;
@@ -16,13 +15,11 @@ public class SectionController {
 
     private final SectionService sectionService;
     private final RegistrationService registrationService;
-    private final CourseService courseService;
 
     @Autowired
     public SectionController(SectionService sectionService, RegistrationService registrationService, CourseService courseService) {
         this.sectionService = sectionService;
         this.registrationService = registrationService;
-        this.courseService = courseService;
     }
 
     @GetMapping

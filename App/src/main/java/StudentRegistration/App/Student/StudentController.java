@@ -1,6 +1,5 @@
 package StudentRegistration.App.Student;
 
-import StudentRegistration.App.Section.Section;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
