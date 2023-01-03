@@ -21,9 +21,9 @@
 
 	- Database should be connected on port 3306
 
-	- Modify the spring.datasource.password file in the [application.properties](\App\src\main\resources\application.properties) file
+	- Modify the spring.datasource.password file in the [application.properties](/App/src/main/resources/application.properties) file
 
-	![Password Picture](Documentation\Screenshots\database_password.png)
+	![Password Picture](Documentation/Screenshots/database_password.png)
 
 1. Run Spring Boot Using Maven
 
@@ -35,16 +35,16 @@
 	mvn spring-boot:run
 	``` 
 
-	![Password Picture](Documentation\Screenshots\run_terminal.png)
+	![Password Picture](Documentation/Screenshots/run_terminal.png)
 
 	## Option 2 Code Editor such as Visual Studio Code
 
 	Open the folder App as a java project in the code editor
 
-	Run the file Application src\main\java\StudentRegistration\App\AppApplication.java
+	Run the file Application src/main/java/StudentRegistration/App/AppApplication.java
 
 	
-	![Password Picture](Documentation\Screenshots\run_gui.png)
+	![Password Picture](Documentation/Screenshots/run_gui.png)
 
 1. Open Website
 
