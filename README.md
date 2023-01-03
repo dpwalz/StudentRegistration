@@ -9,6 +9,40 @@ Student Registration system created as a project for ENSF 607 and ENSF 608 Fall 
 
 System allows a user to log in and register in, drop, or search for courses. Course database is created and stored on the backend. Front end was created using HTML/CSS/Javascript.All communication between backend and frontend is done using a rest API. Backend created in Spring-Boot 
 
+## Example Functionality
+
+### Login 
+
+Can login with the following credentials
+
+```
+Username: test.user
+Password: pass
+```
+
+![Login Process](Documentation/Screenshots/login.png)
+
+### Search Courses
+
+Can search for courses using the right display. Either press the button to view all courses or enter a search term to searched based on matching the LHS of the phrase
+
+The search results are displayed in the box below the search bar
+
+![Search Process](Documentation/Screenshots/search_course.png)
+
+### Add/Drop Course
+
+The courses are made using an accordian list. Openning a course will reveal and add or drop button. When adding a course all required checks will be done before the course is added
+
+![Add or Drop Process](Documentation/Screenshots/add_drop.png)
+
+
+### Logout
+
+Pressing the logout button will bring the user back to the main menu
+
+![Logout Process](Documentation/Screenshots/add_drop.png)
+
 ## How to Run
 
 ## 1. Clone Git Repository:
