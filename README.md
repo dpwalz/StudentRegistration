@@ -1,8 +1,17 @@
-# ENSF607-608
+# ENSF 607-608
+
+Authors:
+- Garnet Crookes
+- Ben Kaminski
+- Derek Walz
+
+Student Registration system created as a project for ENSF 607 and ENSF 608 Fall 2022
+
+System allows a user to log in and register in, drop, or search for courses. Course database is created and stored on the backend. Front end was created using HTML/CSS/Javascript.All communication between backend and frontend is done using a rest API. Backend created in Spring-Boot 
 
 ## How to Run
 
-1. Clone Git Repository:
+## 1. Clone Git Repository:
 	
 	Using Git Bash run the following commands:
 	```
@@ -15,7 +24,7 @@
 	![Git Process](Documentation/Screenshots/git_process.png)
 	
 
-1. Create Database:
+## 2. Create Database:
 	
 	- Run the [CREATE_DATABASE](CREATE_DATABASE.sql) script using MySQL Workbench.
 
@@ -25,7 +34,7 @@
 
 	![Password Picture](Documentation/Screenshots/database_password.png)
 
-1. Run Spring Boot Using Maven
+## 3. Run Spring Boot Using Maven
 
 	## Option 1 Using Git Bash or other terminal
 
@@ -46,6 +55,6 @@
 	
 	![Password Picture](Documentation/Screenshots/run_gui.png)
 
-1. Open Website
+## 4. Open Website
 
 - Using Any web browser navigate to ```http://localhost:8080/```
